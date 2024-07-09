@@ -13,14 +13,14 @@ const AppRouter = () => {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/product/:id" component={ProductPage} />
-        <Route path="/category/:category" component={CategoryPage} />
-        <Route path="/profile" component={ProfilePage} />
-        <Route path="/wishlist" component={WishlistPage} />
-        <Route path="/checkout" component={CheckoutPage} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
+        <Route exact path="/" Component={HomePage} />
+        <Route path="/product/:id" Component={ProductPage} />
+        <Route path="/category/:category" Component={CategoryPage} />
+        <Route path="/profile" Component={ProfilePage} />
+        <Route path="/wishlist" Component={WishlistPage} />
+        <Route path="/checkout" Component={CheckoutPage} />
+        <Route path="/login" Component={Login} />
+        <Route path="/register" Component={Register} />
       </Routes>
     </Router>
   );

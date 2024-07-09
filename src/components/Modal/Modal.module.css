@@ -1,0 +1,62 @@
+.modal {
+    width: 463px;
+    background: #27292D;
+    border-radius: 8px;
+    padding: 24px 40px;
+    position: relative;
+    z-index: 1;
+    background: 
+      linear-gradient(#27292D, #27292D) padding-box, 
+      linear-gradient(141.38deg, #969696 0.56%, #343434 99.58%) border-box;
+    border: 2px solid transparent;
+    background-clip: padding-box, border-box;
+}
+  
+.modalHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 24px 0px;
+    gap: 8px
+}
+
+.closeButton{
+    top:16px;
+    right: 16px;
+    position: absolute;
+}
+
+.headerText {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.94px;
+    letter-spacing: 0.03em;
+    text-align: center;
+    color: #6B6C70;
+}
+
+.descriptionText {
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21.78px;
+    text-align: center;
+    color: #ffffff;
+    margin: 0;
+}
+
+.modalBody {
+    display: block;
+}
+
+
+.modalFooter {
+    margin-top: 10px;
+    display: block;
+}
+
+.link {
+    outline: none;
+}
