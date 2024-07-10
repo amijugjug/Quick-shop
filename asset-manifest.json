@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/quick-shop/static/css/main.95d0894f.css",
-    "main.js": "/quick-shop/static/js/main.0466da87.js",
+    "main.js": "/quick-shop/static/js/main.b0ad2ff1.js",
     "static/js/453.34d2c77a.chunk.js": "/quick-shop/static/js/453.34d2c77a.chunk.js",
     "static/media/Vibrant Athletic Wear Collection.jpg": "/quick-shop/static/media/Vibrant Athletic Wear Collection.70f6d2d8c1fa048fe78f.jpg",
     "static/media/Modern Chic Wardrobe with Industrial Flair.jpg": "/quick-shop/static/media/Modern Chic Wardrobe with Industrial Flair.b2947e8b2133659554a0.jpg",
@@ -14,11 +14,11 @@
     "static/media/CloseButton.svg": "/quick-shop/static/media/CloseButton.1a513be6f68b57d7dead41e755796b37.svg",
     "index.html": "/quick-shop/index.html",
     "main.95d0894f.css.map": "/quick-shop/static/css/main.95d0894f.css.map",
-    "main.0466da87.js.map": "/quick-shop/static/js/main.0466da87.js.map",
+    "main.b0ad2ff1.js.map": "/quick-shop/static/js/main.b0ad2ff1.js.map",
     "453.34d2c77a.chunk.js.map": "/quick-shop/static/js/453.34d2c77a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.95d0894f.css",
-    "static/js/main.0466da87.js"
+    "static/js/main.b0ad2ff1.js"
   ]
 }
