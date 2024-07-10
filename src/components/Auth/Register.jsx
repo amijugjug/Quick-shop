@@ -8,6 +8,7 @@ import { INPUT_TYPE, REGISTER_MODAL_TEXT } from '../../constants';
 import { useModal } from '../../context/Modal.context';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../../services/auth.service';
+import { isValidEmail } from '../../services/helpers/utils.helper';
 
 const RegisterComponent = ({ onRegister = () => {} }) => {
   const [state, setState] = useState({
@@ -25,7 +26,8 @@ const RegisterComponent = ({ onRegister = () => {} }) => {
     state.confirmPassword === '' ||
     state.password === '' ||
     state.username === '' ||
-    state.password !== state.confirmPassword;
+    state.password !== state.confirmPassword ||
+    !isValidEmail(state.email);
 
   const handleNameInputChange = () => {
     const name = event.target.value;

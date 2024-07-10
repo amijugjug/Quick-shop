@@ -1,3 +1,5 @@
+export const ADMIN_ROLE = 2;
+
 export const INPUT_TYPE = {
   TEXT: 'text',
   PASSWORD: 'password',

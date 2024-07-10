@@ -1,4 +1,3 @@
-import { loginSchema, registerSchema } from '../schema/auth.schema';
 import {
   deleteCookie,
   setCookie,
@@ -8,27 +7,12 @@ import { getToken } from '../api/getToken.api';
 import { registerUser } from '../api/registerUser.api';
 
 import { decodeToken } from 'react-jwt';
-import { cache } from 'react';
+
+import { ADMIN_ROLE } from '../constants';
 
 export const login = async (formData, navigateTo, pathToNavigate) => {
   try {
-    const validatedFields = loginSchema.safeParse({
-      username: formData['username'],
-      password: formData['password'],
-    });
-
-    console.log('validatedFields', validatedFields);
-
-    if (!validatedFields.success) {
-      return {
-        errors: validatedFields.error.flatten().fieldErrors,
-      };
-    }
-
-    const token = await getToken(validatedFields.data);
-
-    console.log('token', token);
-
+    const token = await getToken(formData);
     setCookie('token', token, 7);
   } catch (error) {
     console.error(`Failed to login user:`, error?.response?.data);
@@ -49,32 +33,8 @@ export const logout = async (navigateTo) => {
 };
 
 export const register = async (formData, navigate, pathToNavigate) => {
-  console.log('formData : ', formData);
   try {
-    const validatedFields = registerSchema.safeParse({
-      name: formData['name'],
-      email: formData['email'],
-      username: formData['username'],
-      password: formData['password'],
-      confirmPassword: formData['confirmPassword'],
-    });
-
-    console.log('validatedFields', validatedFields.success);
-
-    if (!validatedFields.success) {
-      console.log(
-        'validatedFields.error.flatten().fieldErrors : ',
-        validatedFields.error.flatten().fieldErrors
-      );
-      return {
-        errors: validatedFields.error.flatten().fieldErrors,
-      };
-    }
-
-    const id = await registerUser(validatedFields.data);
-
-    console.log('id', id);
-
+    const id = await registerUser(formData);
     setCookie('id', id, 7);
   } catch (error) {
     console.error(`Failed to register user:`, error);
@@ -89,15 +49,13 @@ export const register = async (formData, navigate, pathToNavigate) => {
   navigate(pathToNavigate);
 };
 
-// Admin role : represents the admin user id in the fakestoreapi db
-const ADMIN_ROLE = 2;
-
 export const verifySession = async () => {
   const token = getCookie('token');
   let decoded = null;
   if (token) {
     decoded = decodeToken(token);
   }
+
   // Redirect to login page if the user is not authenticated
   if (!decoded?.user) {
     window.href = '/login';
