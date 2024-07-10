@@ -6,58 +6,31 @@ import Button from '../atoms/Button';
 
 import { INPUT_TYPE, LOGIN_MODAL_TEXT } from '../../constants';
 import { useModal } from '../../context/Modal.context';
+import { login } from '../../services/auth.service';
+import { useNavigate } from 'react-router-dom';
 
-const LoginComponent = ({ onLogin = () => {} }) => {
+const LoginComponent = () => {
   const [state, setState] = useState({
-    email: '',
+    username: '',
     password: '',
   });
 
-  // const isButtonDisabled = () =>
-  //   state.email === '' ||
-  //   state.password === '' ||
-  //   isValidUsername(state.email) ||
-  //   isValidPassword(state.password) ||
-  //   isValidEmail(state.email);
+  const navigate = useNavigate();
 
-  // const handleEmailInputChange = (event) => {
-  //   const email = event.target.value;
+  const isButtonDisabled = () => state.username === '' || state.password === '';
 
-  //   if (isValidEmail(email) || isValidUsername(email))
-  //     setState({ ...state, email });
-  // };
+  const handleSubmit = () => {
+    login(
+      { username: state.username, password: state.password },
+      navigate,
+      '/'
+    );
+  };
 
-  // const handlePasswordInputChange = (event) => {
-  //   const password = event.target.value;
-  //   if (isValidPassword(password)) setState({ ...state, password });
-  // };
+  const handleUsernameInputChange = (event) => {
+    const username = event.target.value;
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-
-  //   try {
-  //     if (localStorage.getItem('DB')) {
-  //       const k = localStorage.getItem('DB');
-
-  //       const aes = new AESEncryptionService();
-  //       const key = aes.encrypt(`${state.email}${state.password}`);
-
-  //       if (k && k.includes(key)) {
-  //         console.log('login successful');
-  //       }
-  //       onLogin();
-  //     } else {
-  //       throw new Error('User is not registered yet.');
-  //     }
-  //   } catch (error) {
-  //     console.error('Login failed:', error.message);
-  //   }
-  // };
-
-  const handleEmailInputChange = (event) => {
-    const email = event.target.value;
-
-    setState({ ...state, email });
+    setState({ ...state, username });
   };
 
   const handlePasswordInputChange = (event) => {
@@ -71,8 +44,8 @@ const LoginComponent = ({ onLogin = () => {} }) => {
         title={LOGIN_MODAL_TEXT.email.title}
         placeHolder={LOGIN_MODAL_TEXT.email.placeholder}
         type={INPUT_TYPE.TEXT}
-        value={state.email}
-        handleInputChange={handleEmailInputChange}
+        value={state.username}
+        handleInputChange={handleUsernameInputChange}
       />
       <Input
         title={LOGIN_MODAL_TEXT.password.title}
@@ -84,8 +57,8 @@ const LoginComponent = ({ onLogin = () => {} }) => {
       />
       <Button
         text={LOGIN_MODAL_TEXT.buttonText}
-        onClick={() => {}}
-        disabled={false}
+        onClick={handleSubmit}
+        disabled={isButtonDisabled()}
         size="large"
       />
     </>
@@ -94,8 +67,7 @@ const LoginComponent = ({ onLogin = () => {} }) => {
 
 const Login = () => {
   const { modal } = useModal();
-  const onRedirectionTextClick = () => {};
-  if (!modal) return;
+  // if (!modal) return;
   return (
     <Portal>
       <Modal

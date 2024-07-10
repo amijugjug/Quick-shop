@@ -6,22 +6,35 @@ import Button from '../atoms/Button';
 
 import { INPUT_TYPE, REGISTER_MODAL_TEXT } from '../../constants';
 import { useModal } from '../../context/Modal.context';
+import { useNavigate } from 'react-router-dom';
+import { register } from '../../services/auth.service';
 
 const RegisterComponent = ({ onRegister = () => {} }) => {
   const [state, setState] = useState({
-    password: '',
+    name: '',
+    email: '',
     username: '',
+    password: '',
+    confirmPassword: '',
   });
 
+  const navigate = useNavigate();
+
   const isButtonDisabled = () =>
+    state.name === '' ||
+    state.confirmPassword === '' ||
     state.password === '' ||
     state.username === '' ||
-    isValidUsername(state.email) ||
-    isValidPassword(state.password);
+    state.password !== state.confirmPassword;
 
-  const handlePasswordInputChange = (event) => {
-    const password = event.target.value;
-    setState({ ...state, password });
+  const handleNameInputChange = () => {
+    const name = event.target.value;
+    setState({ ...state, name });
+  };
+
+  const handleEmailInputChange = () => {
+    const email = event.target.value;
+    setState({ ...state, email });
   };
 
   const handleUsernameInputChange = (event) => {
@@ -29,50 +42,72 @@ const RegisterComponent = ({ onRegister = () => {} }) => {
     setState({ ...state, username });
   };
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
+  const handlePasswordInputChange = (event) => {
+    const password = event.target.value;
+    setState({ ...state, password });
+  };
 
-  //   try {
-  //     let items = {} as { [key: string]: string };
-  //     if (localStorage.getItem('DB')) {
-  //       const k = localStorage.getItem('DB');
-  //       items = JSON.parse(k ? k : '{}');
-  //       const aes = new AESEncryptionService();
-  //       const key = aes.encrypt(`${state.email}${state.password}`);
-  //       const value = aes.encrypt(`${state.username}${state.password}`);
-  //       items[key] = value;
+  const handleConfirmPasswordInputChange = (event) => {
+    const confirmPassword = event.target.value;
+    setState({ ...state, confirmPassword });
+  };
 
-  //       localStorage.setItem('DB', JSON.stringify(items));
-  //       onRegister();
-  //     } else {
-  //       throw new Error('Problem while registering the user');
-  //     }
-  //   } catch (err: any) {
-  //     console.log('Error :', err);
-  //   }
-  // };
+  const handleSubmit = () => {
+    const postObj = {
+      name: state.name,
+      email: state.email,
+      username: state.username,
+      password: state.password,
+      confirmPassword: state.confirmPassword,
+    };
+    register(postObj, navigate, '/');
+  };
 
   return (
     <>
       <Input
-        title={REGISTER_MODAL_TEXT.username.title}
+        title={REGISTER_MODAL_TEXT.name.title + '*'}
+        placeHolder={REGISTER_MODAL_TEXT.name.placeholder}
+        type={INPUT_TYPE.TEXT}
+        value={state.name}
+        handleInputChange={handleNameInputChange}
+      />
+      <Input
+        title={REGISTER_MODAL_TEXT.email.title}
+        placeHolder={REGISTER_MODAL_TEXT.email.placeholder}
+        type={INPUT_TYPE.TEXT}
+        value={state.email}
+        handleInputChange={handleEmailInputChange}
+      />
+      <Input
+        title={REGISTER_MODAL_TEXT.username.title + '*'}
         placeHolder={REGISTER_MODAL_TEXT.username.placeholder}
         type={INPUT_TYPE.TEXT}
         value={state.username}
         handleInputChange={handleUsernameInputChange}
       />
-      <Input
-        title={REGISTER_MODAL_TEXT.password.title}
-        placeHolder={REGISTER_MODAL_TEXT.password.placeholder}
-        type={INPUT_TYPE.PASSWORD}
-        showEyeIcon={true}
-        value={state.password}
-        handleInputChange={handlePasswordInputChange}
-      />
+      <div style={{ display: 'flex', gap: '10px' }}>
+        <Input
+          title={REGISTER_MODAL_TEXT.password.title + '*'}
+          placeHolder={REGISTER_MODAL_TEXT.password.placeholder}
+          type={INPUT_TYPE.PASSWORD}
+          showEyeIcon={true}
+          value={state.password}
+          handleInputChange={handlePasswordInputChange}
+        />
+        <Input
+          title={REGISTER_MODAL_TEXT.confirmPassword.title + '*'}
+          placeHolder={REGISTER_MODAL_TEXT.confirmPassword.placeholder}
+          type={INPUT_TYPE.PASSWORD}
+          showEyeIcon={true}
+          value={state.confirmPassword}
+          handleInputChange={handleConfirmPasswordInputChange}
+        />
+      </div>
 
       <Button
         text={REGISTER_MODAL_TEXT.buttonText}
-        onClick={() => {}}
+        onClick={handleSubmit}
         disabled={isButtonDisabled()}
         size="large"
       />
@@ -82,8 +117,7 @@ const RegisterComponent = ({ onRegister = () => {} }) => {
 
 const Register = () => {
   const { modal } = useModal();
-  const onRedirectionTextClick = () => {};
-  if (!modal) return;
+  // if (!modal) return;
   return (
     <Portal>
       <Modal
