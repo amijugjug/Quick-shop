@@ -17,7 +17,7 @@ import {
 export const login = async (formData, navigateTo, pathToNavigate) => {
   try {
     // Using local storage for login
-    const localToken = formData.username + formData.password;
+    const localToken = formData.username;
     const existingUsers = JSON.parse(getLocalStorageItem(USERS_DB));
     if (existingUsers && existingUsers.hasOwnProperty(localToken)) {
       setCookie('token', localToken, 7);
@@ -51,7 +51,7 @@ export const register = async (formData, navigate, pathToNavigate) => {
     const id = await registerUser(formData);
     setCookie('id', id, 7);
 
-    const token = formData.username + formData.password;
+    const token = formData.username;
     const newUser = { ...formData, token };
 
     // Storing the new users to local storage because they api is not available currrently.
@@ -100,4 +100,17 @@ export const verifySession = () => {
   // const userId = Number(decoded?.sub);
 
   return { isAuth: true };
+};
+
+export const checkValidUser = (username) => {
+  const decryptedUserName = username;
+  const users_db = JSON.parse(getLocalStorageItem(USERS_DB));
+  if (!users_db) return false;
+
+  const user = users_db[decryptedUserName];
+  if (!user) return false;
+
+  const currentLoggedInUser = getCookie('token');
+  if (currentLoggedInUser === decryptedUserName) return user;
+  return null;
 };

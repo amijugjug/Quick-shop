@@ -19,7 +19,7 @@ const AppRouter = () => {
         <Route exact path="/" Component={HomePage} />
         <Route path="/products" Component={ProductPage} />
         <Route path="/products/:id" Component={ProductDetailPage} />
-        <Route path="/profile" Component={ProfilePage} />
+        <Route path="/profile/:username" Component={ProfilePage} />
         <Route path="/wishlist" Component={WishlistPage} />
         <Route path="/checkout" Component={CheckoutPage} />
         <Route path="/login" Component={Login} />
