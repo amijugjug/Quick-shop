@@ -27,7 +27,7 @@ const RegisterComponent = ({ onRegister = () => {} }) => {
     state.password === '' ||
     state.username === '' ||
     state.password !== state.confirmPassword ||
-    !isValidEmail(state.email);
+    (state.email !== '' && !isValidEmail(state.email));
 
   const handleNameInputChange = () => {
     const name = event.target.value;
