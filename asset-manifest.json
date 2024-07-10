@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.95d0894f.css",
+    "main.js": "/static/js/main.24273e6a.js",
+    "static/js/453.34d2c77a.chunk.js": "/static/js/453.34d2c77a.chunk.js",
+    "static/media/Vibrant Athletic Wear Collection.jpg": "/static/media/Vibrant Athletic Wear Collection.70f6d2d8c1fa048fe78f.jpg",
+    "static/media/Modern Chic Wardrobe with Industrial Flair.jpg": "/static/media/Modern Chic Wardrobe with Industrial Flair.b2947e8b2133659554a0.jpg",
+    "static/media/Urban Sophisticate.jpg": "/static/media/Urban Sophisticate.70cde1d2f286f18623d0.jpg",
+    "static/media/Contemplative Athleisure.jpg": "/static/media/Contemplative Athleisure.7060d6269366e8849934.jpg",
+    "static/media/Contemplative Fashion Portrait.jpg": "/static/media/Contemplative Fashion Portrait.99db5bf0600bd355c1bf.jpg",
+    "static/media/user-avatar.svg": "/static/media/user-avatar.92c34971e4aa1f3e0b26453a1aedaf62.svg",
+    "static/media/shoping-cart.svg": "/static/media/shoping-cart.ee75deeb9ad370c78e483747b9c445e6.svg",
+    "static/media/EyeImg.svg": "/static/media/EyeImg.30cafda1d8cf86ffa2be1023d40e8709.svg",
+    "static/media/CloseButton.svg": "/static/media/CloseButton.1a513be6f68b57d7dead41e755796b37.svg",
+    "index.html": "/index.html",
+    "main.95d0894f.css.map": "/static/css/main.95d0894f.css.map",
+    "main.24273e6a.js.map": "/static/js/main.24273e6a.js.map",
+    "453.34d2c77a.chunk.js.map": "/static/js/453.34d2c77a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.95d0894f.css",
+    "static/js/main.24273e6a.js"
+  ]
+}
