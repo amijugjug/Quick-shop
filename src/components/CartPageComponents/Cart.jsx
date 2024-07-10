@@ -1,16 +1,18 @@
 import React from 'react';
 import CartItem from './CartItem';
 
-const Cart = ({ items }) => {
+const Cart = ({ items, isWishList = false }) => {
   return (
     <div style={styles.cart}>
       {items?.map((item) => (
         <CartItem key={item.id} item={item} />
       ))}
-      <div style={styles.checkoutContainer}>
-        <button style={styles.clearCartButton}>Clear Cart</button>
-        <button style={styles.checkoutButton}>Checkout</button>
-      </div>
+      {!isWishList ? (
+        <div style={styles.checkoutContainer}>
+          <button style={styles.clearCartButton}>Clear Cart</button>
+          <button style={styles.checkoutButton}>Checkout</button>
+        </div>
+      ) : null}
     </div>
   );
 };

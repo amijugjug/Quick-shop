@@ -2,6 +2,7 @@ import s from './Navbar.module.css';
 import UserAvatarOptions from '../Header/UserAvatarOptions';
 import { Link } from 'react-router-dom';
 import ShoppingCartOption from '../Header/ShoppingCartOption';
+import WishlistOption from '../Header/WishlistOption';
 
 const Navbar = () => {
   return (
@@ -23,6 +24,7 @@ const Navbar = () => {
           marginRight: '1rem',
         }}
       >
+        <WishlistOption />
         <ShoppingCartOption />
         {/* <Image src={ShoppingCart} width={42} height={42} alt="Shopping Cart" /> */}
         <UserAvatarOptions />
