@@ -18,14 +18,25 @@ export const getCookie = (name) => {
  * @param {string} value - The value of the cookie
  * @param {number} [days] - Number of days until the cookie expires
  */
-export const setCookie = (name, value, days) => {
+export const setCookie = (name, value, days = 7) => {
   let expires = '';
   if (days) {
     const date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
     expires = `; expires=${date.toUTCString()}`;
   }
-  document.cookie = `${name}=${value || ''}${expires}; path=/`;
+  const cookie = [
+    name,
+    '=',
+    value,
+    '; domain_.',
+    window.location.host.toString(),
+    expires,
+    `; path=/;`,
+  ].join('');
+
+  // `path=/; sameSite='lax';secure=true; httpOnly=true'`
+  document.cookie = cookie;
 };
 
 /**
