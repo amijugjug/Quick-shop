@@ -5,15 +5,7 @@ import { getLocalStorageItem } from '../../services/helpers/storageHelpers/local
 import { CART, USERS_DB } from '../../constants';
 
 const CheckoutPage = () => {
-  const [cartArray, setCartArray] = useState(() => {
-    const token = getCookie('token');
-    const db = JSON.parse(getLocalStorageItem(USERS_DB));
-    const user = db[token];
-
-    const UCA = Object.values(user.cart);
-
-    return UCA;
-  });
+  const [cartArray, setCartArray] = useState([]);
   useEffect(() => {
     const token = getCookie('token');
     const db = JSON.parse(getLocalStorageItem(USERS_DB));
@@ -22,9 +14,17 @@ const CheckoutPage = () => {
     const UCA = Object.values(user.cart);
 
     setCartArray(UCA);
-  }, [getLocalStorageItem(USERS_DB)]);
+    console.log('this ran successfully');
+  }, []);
 
-  return <Cart items={cartArray} title={CART} totalItems={cartArray.length} />;
+  return (
+    <Cart
+      items={cartArray}
+      title={CART}
+      totalItems={cartArray.length}
+      isWishlist={false}
+    />
+  );
 };
 
 export default CheckoutPage;

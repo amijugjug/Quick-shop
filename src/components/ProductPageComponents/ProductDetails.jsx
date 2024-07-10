@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Image from '../../components/atoms/Image';
 import AddToCartComponent from '../AddToCartComponent';
+import { AddToWishlist } from '../AddToWishlist';
 
 const ProductPage = ({ product }) => {
   return (
@@ -45,6 +46,7 @@ const ProductPage = ({ product }) => {
             }}
           >
             <p style={styles.price}>${product.price}</p>
+            <AddToWishlist showImage={true} product={product} />
             <AddToCartComponent showCount={false} product={product} />
           </div>
         </div>

@@ -36,7 +36,13 @@ export const AddToWishlist = ({ showImage = false, product }) => {
     }
   };
   return showImage ? (
-    <Image src={WishlistIcon} onClick={addItemToWishlist} />
+    <Image
+      src={WishlistIcon}
+      onClick={addItemToWishlist}
+      width={48}
+      height={48}
+      style={{ alignSelf: 'center' }}
+    />
   ) : (
     <span style={styles.category} onClick={addItemToWishlist}>
       Add to wishlist
@@ -60,7 +66,10 @@ export const RemoveFromWishlist = ({ product }) => {
     }
   };
   return (
-    <span style={styles.category} onClick={removeItemFromWishlist}>
+    <span
+      style={{ ...styles.category, backgroundColor: '#d9534f', color: '#fff' }}
+      onClick={removeItemFromWishlist}
+    >
       Remove Item
     </span>
   );

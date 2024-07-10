@@ -18,7 +18,7 @@ const WishlistPage = () => {
   return (
     <Cart
       items={wishlistArray}
-      isWishList
+      isWishlist={true}
       title={WISHLIST}
       totalItems={wishlistArray.length}
     />

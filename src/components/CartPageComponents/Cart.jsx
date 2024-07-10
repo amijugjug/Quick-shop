@@ -38,7 +38,7 @@ const CartHeader = ({ title, totalItems }) => {
   );
 };
 
-const Cart = ({ title, items, isWishList = false, totalItems }) => {
+const Cart = ({ title, items, isWishlist = false, totalItems }) => {
   const onClearCartClick = () => {
     verifySession();
     const decryptedUserName = getCookie('token');
@@ -78,10 +78,10 @@ const Cart = ({ title, items, isWishList = false, totalItems }) => {
         ) : (
           <>
             {items?.map((item) => (
-              <CartItem key={item.id} item={item} isWishList={isWishList} />
+              <CartItem key={item.id} item={item} isWishlist={isWishlist} />
             ))}{' '}
             <div style={styles.checkoutContainer}>
-              {isWishList ? (
+              {isWishlist ? (
                 <button
                   style={styles.clearCartButton}
                   onClick={onClearWishlistClick}
