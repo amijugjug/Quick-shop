@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import Image from '../../components/atoms/Image';
 import Button from '../atoms/Button';
-import AddToCartButton from '../AddToCartButtons';
+import AddToCartComponent from '../AddToCartComponent';
+import { AddToWishlist } from '../AddToWishlist';
 
 const ProductCard = ({ product }) => {
   return (
@@ -29,11 +30,14 @@ const ProductCard = ({ product }) => {
           </p>
         </div>
         <div style={styles.bottomSection}>
-          <span style={styles.category}>{product.category}</span>
+          <div style={styles.categoryContainer}>
+            <span style={styles.category}>{product.category}</span>
+            <AddToWishlist product={product} />
+          </div>
           <div style={styles.priceContainer}>
             <p style={styles.price}>${product.price}</p>
             <div style={styles.addToCartButtonContainer}>
-              <AddToCartButton showCount={true} />
+              <AddToCartComponent showCount={true} product={product} />
             </div>
           </div>
         </div>
@@ -122,6 +126,12 @@ const styles = {
     bottom: '0px',
     width: '100%',
   },
+  categoryContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: '0.5rem',
+  },
   category: {
     padding: '0.5rem',
     borderRadius: '0.375rem',
@@ -130,6 +140,7 @@ const styles = {
     fontWeight: 500,
     textTransform: 'capitalize',
     background: '#DAC0A3',
+    cursor: 'pointer.',
   },
   priceContainer: {
     display: 'flex',

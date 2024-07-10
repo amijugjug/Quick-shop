@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Cart from '../../components/CartPageComponents/Cart';
+import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
+import { getLocalStorageItem } from '../../services/helpers/storageHelpers/localstorage.helper';
+import { CART, USERS_DB } from '../../constants';
 
 const CheckoutPage = () => {
-  const generateRandomProducts = (numProducts) => {
-    const products = [];
-    for (let i = 0; i < numProducts; i++) {
-      products.push({
-        id: i + 1,
-        name: `Product ${i + 1}`,
-        description: `This is a description of product ${i + 1}`,
-        image: `https://via.placeholder.com/100?text=Product+${i + 1}`,
-        count: Math.floor(Math.random() * 10) + 1,
-      });
-    }
-    return products;
-  };
+  const [cartArray, setCartArray] = useState(() => {
+    const token = getCookie('token');
+    const db = JSON.parse(getLocalStorageItem(USERS_DB));
+    const user = db[token];
 
-  return <Cart items={generateRandomProducts(15)} />;
+    const UCA = Object.values(user.cart);
+
+    return UCA;
+  });
+  useEffect(() => {
+    const token = getCookie('token');
+    const db = JSON.parse(getLocalStorageItem(USERS_DB));
+    const user = db[token];
+
+    const UCA = Object.values(user.cart);
+
+    setCartArray(UCA);
+  }, [getLocalStorageItem(USERS_DB)]);
+
+  return <Cart items={cartArray} title={CART} totalItems={cartArray.length} />;
 };
 
 export default CheckoutPage;

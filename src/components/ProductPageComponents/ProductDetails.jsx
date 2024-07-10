@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Image from '../../components/atoms/Image';
-import Button from '../atoms/Button';
-import AddToCartButton from '../AddToCartButtons';
+import AddToCartComponent from '../AddToCartComponent';
 
 const ProductPage = ({ product }) => {
   return (
@@ -46,7 +45,7 @@ const ProductPage = ({ product }) => {
             }}
           >
             <p style={styles.price}>${product.price}</p>
-            <AddToCartButton showCount={false} />
+            <AddToCartComponent showCount={false} product={product} />
           </div>
         </div>
       </div>

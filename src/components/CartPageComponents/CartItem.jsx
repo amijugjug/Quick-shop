@@ -1,6 +1,8 @@
 import React from 'react';
+import AddToCartComponent from '../AddToCartComponent';
+import { RemoveFromWishlist } from '../AddToWishlist';
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, isWishlist }) => {
   return (
     <div style={styles.cartItem}>
       <div style={styles.imageContainer}>
@@ -8,14 +10,13 @@ const CartItem = ({ item }) => {
       </div>
       <div style={styles.detailsContainer}>
         <div style={styles.textContainer}>
-          <div style={styles.productName}>{item.name}</div>
+          <div style={styles.productName}>{item.title}</div>
           <div style={styles.productDescription}>{item.description}</div>
         </div>
       </div>
       <div style={styles.actionsContainer}>
-        <button style={styles.button}>+</button>
-        <p style={styles.count}>{item.count}</p>
-        <button style={styles.button}>-</button>
+        {isWishlist ? <RemoveFromWishlist product={item} /> : null}
+        <AddToCartComponent product={item} showCount={true} />
       </div>
     </div>
   );
@@ -41,6 +42,7 @@ const styles = {
   detailsContainer: {
     flex: '1',
     marginRight: '20px',
+    width: '100px',
   },
   textContainer: {
     display: 'flex',
@@ -60,7 +62,9 @@ const styles = {
   },
   actionsContainer: {
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   button: {
     backgroundColor: '#007bff',
