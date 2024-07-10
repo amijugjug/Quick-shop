@@ -24,6 +24,10 @@ export const REGISTER_MODAL_TEXT = {
   descriptionText: 'Create an account to continue',
   footerStatementText: 'Already have an account?',
   redirectionText: 'Login',
+  name: {
+    title: 'Name',
+    placeholder: 'Enter your full name',
+  },
   email: {
     title: 'Email',
     placeholder: 'Enter your email',
@@ -35,6 +39,10 @@ export const REGISTER_MODAL_TEXT = {
   password: {
     title: 'Password',
     placeholder: 'Choose a strong password',
+  },
+  confirmPassword: {
+    title: 'Confirm Password',
+    placeholder: 'Re-enter your password',
   },
   buttonText: 'Continue',
 };
