@@ -4,7 +4,7 @@ import { getCategories } from '../api/getCategories.api';
 import { getSingleProduct } from '../api/getSingleProduct';
 
 export const fetchSingleProduct = async (id) => {
-  const session = await verifySession();
+  const session = verifySession();
   if (!session) return null;
 
   try {
@@ -17,7 +17,7 @@ export const fetchSingleProduct = async (id) => {
 };
 
 export const fetchProducts = async (category = '', query = '') => {
-  const session = await verifySession();
+  const session = verifySession();
   if (!session) return [];
 
   try {
@@ -36,7 +36,7 @@ export const fetchProducts = async (category = '', query = '') => {
 };
 
 export const fetchCategories = async () => {
-  const session = await verifySession();
+  const session = verifySession();
   if (!session) return [];
 
   try {

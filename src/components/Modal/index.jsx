@@ -42,14 +42,6 @@ const Modal = ({ children, props }) => {
   return (
     <div className={s.modal}>
       <div className={s.modalHeader}>
-        <img
-          src={CloseButton}
-          alt="Close"
-          className={s.closeButton}
-          onClick={closeButtonOnClick}
-          style={{ cursor: 'pointer' }}
-          role="button"
-        />
         <p className={s.headerText}>{headerText}</p>
         <h3 className={s.descriptionText}>{descriptionText}</h3>
       </div>

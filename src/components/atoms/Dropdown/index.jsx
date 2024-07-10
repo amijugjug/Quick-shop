@@ -2,11 +2,18 @@ import React, { useState } from 'react';
 import s from './Dropdown.module.css';
 import Image from '../Image';
 
-const Dropdown = ({ options, onSelect, placeholder, placeholderImage }) => {
+const Dropdown = ({
+  options,
+  onSelect,
+  placeholder,
+  placeholderImage,
+  onDropDownClick,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
   const toggleDropdown = () => {
+    onDropDownClick();
     setIsOpen(!isOpen);
   };
 

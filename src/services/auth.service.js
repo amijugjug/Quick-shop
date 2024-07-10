@@ -49,7 +49,7 @@ export const register = async (formData, navigate, pathToNavigate) => {
   navigate(pathToNavigate);
 };
 
-export const verifySession = async () => {
+export const verifySession = () => {
   const token = getCookie('token');
   let decoded = null;
   if (token) {
@@ -58,7 +58,7 @@ export const verifySession = async () => {
 
   // Redirect to login page if the user is not authenticated
   if (!decoded?.user) {
-    window.href = '/login';
+    window.location.href = '/login';
   }
 
   const userId = Number(decoded?.sub);

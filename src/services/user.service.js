@@ -2,7 +2,7 @@ import { getUser } from '../api/getUser.api';
 import { verifySession } from './auth.service';
 
 export async function getCurrentUser() {
-  const session = await verifySession();
+  const session = verifySession();
   if (!session) return null;
   const { isAdmin, id } = session;
   try {

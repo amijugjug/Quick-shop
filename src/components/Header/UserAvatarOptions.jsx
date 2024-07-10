@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { getCurrentUser } from '../../services/user.service';
 
 import UserAvatar from '../../static/assets/user-avatar.svg';
-import { logout } from '../../services/auth.service';
+import { logout, verifySession } from '../../services/auth.service';
 import { useNavigate } from 'react-router-dom';
 
 const UserAvatarOptions = () => {
@@ -11,10 +11,10 @@ const UserAvatarOptions = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    (async () => {
-      const currentUser = await getCurrentUser();
-      setUser(currentUser);
-    })();
+    // (async () => {
+    //   const currentUser = await getCurrentUser();
+    //   setUser(currentUser);
+    // })();
   }, []);
 
   const onSelect = (option) => {
@@ -31,6 +31,7 @@ const UserAvatarOptions = () => {
       onSelect={onSelect}
       placeholder="User"
       placeholderImage={UserAvatar}
+      onDropDownClick={verifySession}
     />
   );
 };
