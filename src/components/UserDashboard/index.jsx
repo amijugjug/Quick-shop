@@ -2,42 +2,21 @@ import { useEffect, useState } from 'react';
 import { useUser } from '../../context/User.context';
 import Cart from '../CartPageComponents/Cart';
 import PropTypes from 'prop-types';
+import styles from './UserDashboard.module.css'; // Import the CSS file
 
 const UserDashboard = () => {
   const { user } = useUser();
   const [previousOrders, setPreviousOrders] = useState([]);
+
   useEffect(() => {
     if (user?.previousorders)
       setPreviousOrders(Object.values(user?.previousorders));
   }, [user?.previousorders]);
-  const styles = {
-    dashboardContainer: {
-      margin: '20px',
-    },
-    userInfo: {
-      border: '1px solid #ccc',
-      padding: '20px',
-      borderRadius: '8px',
-      width: '80%',
-      maxWidth: '600px',
-      marginBottom: '20px',
-    },
-    ordersList: {
-      maxHeight: '500px',
-      overflowY: 'auto',
-      marginTop: '10px',
-    },
-    heading: {
-      margin: '0 0 10px',
-    },
-  };
-
-  useEffect(() => {}, [user.previousorders]);
 
   return (
-    <div style={styles.dashboardContainer}>
-      <div style={styles.userInfo}>
-        <h2 style={styles.heading}>User Dashboard</h2>
+    <div className={styles.dashboardContainer}>
+      <div className={styles.userInfo}>
+        <h2 className={styles.heading}>User Dashboard</h2>
         <p>
           <strong>Name:</strong> {user?.name}
         </p>
@@ -48,7 +27,7 @@ const UserDashboard = () => {
           <strong>Username:</strong> {user?.username}
         </p>
       </div>
-      <div style={styles.ordersList}>
+      <div className={styles.ordersList}>
         <Cart
           title={'Your Previous Orders'}
           totalItems={previousOrders.length}
@@ -74,4 +53,5 @@ UserDashboard.propTypes = {
     totalCartItemCount: PropTypes.number,
   }).isRequired,
 };
+
 export default UserDashboard;

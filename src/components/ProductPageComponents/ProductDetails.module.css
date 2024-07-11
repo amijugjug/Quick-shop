@@ -1,0 +1,174 @@
+/* ProductPage.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+  align-self: center;
+}
+
+@media (min-width: 460px) {
+  .container {
+    padding: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 80px;
+  }
+}
+
+.backLink {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #0070f3;
+  text-decoration: none;
+}
+
+@media (min-width: 460px) {
+  .backLink {
+    padding: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .backLink {
+    display: flex;
+  }
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 12px;
+}
+
+@media (min-width: 460px) {
+  .contentContainer {
+    padding: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .contentContainer {
+    flex-direction: row;
+  }
+}
+
+.productImage {
+  max-width: 240px;
+  border-radius: 16px;
+  background-color: white;
+  object-fit: contain;
+  padding: 32px;
+}
+
+@media (min-width: 640px) {
+  .productImage {
+    max-width: 350px;
+  }
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 600px;
+  height: 100%;
+}
+
+@media (min-width: 640px) {
+  .detailsContainer {
+    justify-content: center;
+  }
+}
+
+.categoryContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.category {
+  background-color: #dac0a3;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 32px;
+  }
+}
+
+.description {
+  font-size: 12px;
+}
+
+@media (min-width: 1024px) {
+  .description {
+    font-size: 16px;
+  }
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ratingText {
+  margin-left: 8px;
+}
+
+.adjustButton {
+  padding: 8px;
+}
+
+@media (min-width: 460px) {
+  .adjustButton {
+    padding: 16px;
+  }
+}
+
+.addToCartButton {
+  max-width: fit-content;
+}
+
+.icon {
+  height: 16px;
+  width: 16px;
+}
+
+.cartIcon {
+  margin-right: 16px;
+}

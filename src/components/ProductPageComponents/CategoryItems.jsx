@@ -1,35 +1,15 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import styles from './CategoryItems.module.css'; // Import the CSS Module
 
 const CategoryItems = ({ categories, currentCategory, type }) => {
-  const styles = {
-    containerStyle: {
-      display: 'flex',
-      gap: '10px',
-      flexWrap: 'wrap',
-    },
-    linkStyle: (isActive) => ({
-      padding: '8px 12px',
-      borderRadius: '20px',
-      backgroundColor: isActive ? '#DAC0A3' : '#f0f0f0',
-      color: isActive ? '#fff' : '#333',
-      textDecoration: 'none',
-      textTransform: 'capitalize',
-      transition: 'all 0.3s ease',
-      fontWeight: isActive ? 'bold' : 'normal',
-    }),
-  };
-
   return (
-    <div style={styles.containerStyle}>
+    <div className={styles.containerStyle}>
       <Link
         to="/products"
-        style={{
-          ...styles.linkStyle(!currentCategory),
-          textDecoration: 'none',
-        }}
-        onMouseEnter={(e) => (e.target.style.textDecoration = 'underline')}
-        onMouseLeave={(e) => (e.target.style.textDecoration = 'none')}
+        className={`${styles.linkStyle} ${!currentCategory ? styles.linkStyleActive : ''}`}
+        onMouseEnter={(e) => e.target.classList.add(styles.linkStyleHover)}
+        onMouseLeave={(e) => e.target.classList.remove(styles.linkStyleHover)}
       >
         All
       </Link>
@@ -39,12 +19,9 @@ const CategoryItems = ({ categories, currentCategory, type }) => {
           <Link
             key={cat}
             to={link}
-            style={{
-              ...styles.linkStyle(currentCategory === cat),
-              textDecoration: 'none',
-            }}
-            onMouseEnter={(e) => (e.target.style.textDecoration = 'underline')}
-            onMouseLeave={(e) => (e.target.style.textDecoration = 'none')}
+            className={`${styles.linkStyle} ${currentCategory === cat ? styles.linkStyleActive : ''}`}
+            onMouseEnter={(e) => e.target.classList.add(styles.linkStyleHover)}
+            onMouseLeave={(e) => e.target.classList.remove(styles.linkStyleHover)}
           >
             {cat}
           </Link>

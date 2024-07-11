@@ -1,0 +1,22 @@
+/* Categories.module.css */
+
+.articleStyle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.375rem;
+  width: 100%;
+  height: fit-content;
+}
+
+.titleStyle {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  margin: 0;
+}
+
+.categoryContainerStyle {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
