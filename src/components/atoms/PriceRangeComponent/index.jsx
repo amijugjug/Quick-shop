@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const PriceRangeComponent = ({ min, max, onChange }) => {
   const [value, setValue] = useState([min, max]);
@@ -32,18 +32,10 @@ const PriceRangeComponent = ({ min, max, onChange }) => {
           value={value}
           onChange={handleChange}
           step={1}
-          style={{
-            width: '100%',
-            height: '8px',
-            cursor: 'pointer',
-            borderRadius: '5px',
-            backgroundColor: '#ddd',
-            outline: 'none',
-            appearance: 'none',
-          }}
         />
         <p>{max}</p>
       </div>
+      Selected Range : 0 - {value}
     </div>
   );
 };

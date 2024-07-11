@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import ProductPage from '../pages/ProductPage';
@@ -10,6 +9,7 @@ import Register from '../components/Auth/Register';
 import ProductDetailPage from '../pages/ProductDetailPage';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import NotFoundPage from '../pages/NotFound';
 
 const AppRouter = () => {
   return (
@@ -24,6 +24,7 @@ const AppRouter = () => {
         <Route path="/checkout" Component={CheckoutPage} />
         <Route path="/login" Component={Login} />
         <Route path="/register" Component={Register} />
+        <Route path="*" Component={NotFoundPage} />
       </Routes>
       <Footer />
     </Router>

@@ -1,0 +1,140 @@
+.article {
+  display: flex;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  flex-direction: column;
+  background-color: rgb(241, 241, 244);
+  border-radius: 0.375rem;
+  border-width: 2px;
+  max-width: 300px;
+  height: 500px;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  flex: 1 1 200px;
+
+  &:hover,
+  &:focus {
+    transform: scale3d(1.01, 1.01, 1);
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  flex: 1 1 0%;
+  border-radius: 0.25rem;
+  max-height: 12rem;
+  background: #fefaf6;
+}
+
+.image {
+  object-fit: contain;
+  width: 10rem;
+  height: 10rem;
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms, 300ms;
+}
+
+.content {
+  flex-direction: column;
+  flex: 1 1 0%;
+  justify-content: space-between;
+  position: relative;
+}
+
+.topSection {
+  position: absolute;
+  top: 0px;
+}
+
+.title {
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.description {
+  text-decoration: none;
+  color: rgb(87, 83, 78);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.bottomSection {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+.categoryContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.category {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  background: #dac0a3;
+  cursor: pointer;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.price {
+  font-weight: 700;
+}
+
+.addToCartButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.imageContainer {
+  position: relative;
+}
+
+.rating {
+  z-index: 2;
+  background-color: green;
+  border-radius: 5px;
+  position: absolute;
+  color: white;
+  padding: 4px;
+  top: 10px;
+  left: 10px;
+  font-size: 10px;
+}

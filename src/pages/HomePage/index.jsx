@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import Image from '../../components/atoms/Image';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../components/atoms/Button';
 
 import ModernChicWardrobewithIndustrialFlair from '../../static/assets/Modern Chic Wardrobe with Industrial Flair.jpg';
@@ -7,8 +7,6 @@ import UrbanSophisticate from '../../static/assets/Urban Sophisticate.jpg';
 import ContemplativeAthleisure from '../../static/assets/Contemplative Athleisure.jpg';
 import VibrantAthleticWearCollection from '../../static/assets/Vibrant Athletic Wear Collection.jpg';
 import ContemplativeFashionPortrait from '../../static/assets/Contemplative Fashion Portrait.jpg';
-
-import s from './HomePage.module.css';
 
 function HeroSection({ navigate }) {
   return (
@@ -31,7 +29,7 @@ function HeroSection({ navigate }) {
           position: 'relative',
         }}
       >
-        <img
+        <Image
           loading="eager"
           width={1400}
           height={500}
@@ -39,7 +37,7 @@ function HeroSection({ navigate }) {
           src={ModernChicWardrobewithIndustrialFlair}
           alt="Modern Chic Wardrobe with Industrial Flair"
         />
-        <img
+        <Image
           loading="eager"
           width={600}
           height={500}
@@ -139,7 +137,7 @@ function GridSection({ navigate }) {
             width: '50%',
           }}
         >
-          <img
+          <Image
             src={ContemplativeAthleisure}
             alt="Contemplative Athleisure"
             loading="lazy"
@@ -284,7 +282,7 @@ function GridSection({ navigate }) {
                 position: 'relative',
               }}
             >
-              <img
+              <Image
                 src={VibrantAthleticWearCollection}
                 alt="Vibrant Athletic Wear Collection"
                 loading="lazy"
@@ -341,7 +339,7 @@ function GridSection({ navigate }) {
               minHeight: 'min-content',
             }}
           >
-            <img
+            <Image
               src={ContemplativeFashionPortrait}
               alt="Contemplative Fashion Portrait"
               loading="lazy"

@@ -1,4 +1,4 @@
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import Categories from '../../components/ProductPageComponents/Categories';
 import ProductList from '../../components/ProductPageComponents/ProductList';
 import { useEffect, useState } from 'react';
@@ -8,6 +8,8 @@ const ProductsPage = () => {
   const [queryParams] = useSearchParams();
   const [productList, setProductList] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [filteredList, setFilteredList] = useState([]);
   useEffect(() => {
     const query = queryParams.get('query') || '';
     const category = queryParams.get('category') || '';
@@ -19,6 +21,8 @@ const ProductsPage = () => {
         ]);
         setProductList(products);
         setCategories(categories);
+        setFilteredList(products);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching products:', error);
       }
@@ -27,7 +31,7 @@ const ProductsPage = () => {
 
   const handlePriceRangeChange = (maxPrice) => {
     const filterByPrice = productList?.filter((p) => p.price < maxPrice);
-    setProductList(filterByPrice);
+    setFilteredList(filterByPrice);
   };
 
   return (
@@ -46,7 +50,7 @@ const ProductsPage = () => {
         currentCategory={queryParams.get('category')}
         handlePriceRangeChange={handlePriceRangeChange}
       />
-      <ProductList productList={productList} />
+      {loading ? 'page loading' : <ProductList productList={filteredList} />}
     </section>
   );
 };

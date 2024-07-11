@@ -88,7 +88,7 @@ const Categories = ({
           <h1 style={styles.titleStyle}>Filter by price</h1>
           <PriceRangeComponent
             min={0}
-            max={300}
+            max={200}
             onChange={handlePriceRangeChange}
           />
         </div>

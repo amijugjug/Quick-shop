@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import Image from '../atoms/Image';
 import s from './Input.module.css';
 import { INPUT_TYPE } from '../../constants';
 import EyeImage from '../../static/assets/EyeImg.svg';
@@ -31,7 +32,7 @@ const Input = ({
         />
         {showEyeIcon ? (
           <button onClick={togglePasswordVisibility} className={s.eyeIcon}>
-            <img src={EyeImage} alt="Show Password" className={s.icon} />
+            <Image src={EyeImage} alt="Show Password" className={s.icon} />
           </button>
         ) : null}
       </span>

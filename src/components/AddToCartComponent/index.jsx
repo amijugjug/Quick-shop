@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../atoms/Button';
 import { getUserFromLS, verifySession } from '../../services/auth.service';
 import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
@@ -95,6 +95,7 @@ const AddToCartComponent = ({ showCount, product }) => {
       <Button
         text="-"
         size="rounded"
+        disabled={count <= 0}
         backgroundColor="#DACOA3"
         onClick={removeItemFromCart}
       />
