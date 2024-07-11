@@ -11,7 +11,12 @@ import { registerUser } from '../api/registerUser.api';
 import { USERS_DB } from '../constants';
 // import { decodeToken } from 'react-jwt';
 
-export const login = async (formData, navigateTo, pathToNavigate) => {
+export const login = async (
+  formData,
+  navigateTo,
+  pathToNavigate,
+  pushToast
+) => {
   try {
     // Using local storage for login
     const localToken = formData.username;
@@ -22,6 +27,7 @@ export const login = async (formData, navigateTo, pathToNavigate) => {
     ) {
       setCookie('token', localToken, 7);
     } else {
+      pushToast('error', 'User is not registered');
       throw new Error(`User is not registerd`);
     }
 

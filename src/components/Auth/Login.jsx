@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { INPUT_TYPE, LOGIN_MODAL_TEXT } from '../../constants';
+import { useToast } from '../../context/Toast.context';
 import { login } from '../../services/auth.service';
 import Button from '../atoms/Button';
 import Input from '../Input';
 import Modal from '../Modal';
 import Portal from '../Portal';
 // import { useModal } from '../../context/Modal.context';
-
 
 const LoginComponent = () => {
   const [state, setState] = useState({
@@ -17,6 +17,7 @@ const LoginComponent = () => {
   });
 
   const navigate = useNavigate();
+  const { notify } = useToast();
 
   const isButtonDisabled = () => state.username === '' || state.password === '';
 
@@ -24,7 +25,8 @@ const LoginComponent = () => {
     login(
       { username: state.username, password: state.password },
       navigate,
-      '/'
+      '/',
+      notify
     );
   };
 
