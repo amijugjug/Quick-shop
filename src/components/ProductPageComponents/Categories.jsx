@@ -1,69 +1,13 @@
-import { Link } from 'react-router-dom';
 import PriceRangeComponent from '../atoms/PriceRangeComponent';
 import PropTypes from 'prop-types';
-
-const CategoryItems = ({ categories, currentCategory }) => {
-  const styles = {
-    containerStyle: {
-      display: 'flex',
-      gap: '10px',
-      flexWrap: 'wrap',
-    },
-    linkStyle: (isActive) => ({
-      padding: '8px 12px',
-      borderRadius: '20px',
-      backgroundColor: isActive ? '#DAC0A3' : '#f0f0f0',
-      color: isActive ? '#fff' : '#333',
-      textDecoration: 'none',
-      textTransform: 'capitalize',
-      transition: 'all 0.3s ease',
-      fontWeight: isActive ? 'bold' : 'normal',
-    }),
-  };
-
-  return (
-    <div style={styles.containerStyle}>
-      <Link
-        to="/products"
-        style={{
-          ...styles.linkStyle(!currentCategory),
-          textDecoration: 'none',
-        }}
-        onMouseEnter={(e) => (e.target.style.textDecoration = 'underline')}
-        onMouseLeave={(e) => (e.target.style.textDecoration = 'none')}
-      >
-        All
-      </Link>
-      {categories?.map((cat) => {
-        const link = `/products?category=${cat}`;
-        return (
-          <Link
-            key={cat}
-            to={link}
-            style={{
-              ...styles.linkStyle(currentCategory === cat),
-              textDecoration: 'none',
-            }}
-            onMouseEnter={(e) => (e.target.style.textDecoration = 'underline')}
-            onMouseLeave={(e) => (e.target.style.textDecoration = 'none')}
-          >
-            {cat}
-          </Link>
-        );
-      })}
-    </div>
-  );
-};
-
-CategoryItems.propTypes = {
-  categories: PropTypes.array.isRequired,
-  currentCategory: PropTypes.string.isRequired,
-};
+import CategoryItems from './CategoryItems';
+import { RATINGS } from '../../constants';
 
 const Categories = ({
   categories,
   currentCategory,
   handlePriceRangeChange,
+  currentRating,
 }) => {
   const styles = {
     articleStyle: {
@@ -102,6 +46,15 @@ const Categories = ({
           <CategoryItems
             categories={categories}
             currentCategory={currentCategory}
+            type="category"
+          />
+        </div>
+        <div style={styles.categoryContainerStyle}>
+          <h1 style={styles.titleStyle}>Ratings</h1>
+          <CategoryItems
+            categories={RATINGS}
+            currentCategory={currentRating}
+            type="rating"
           />
         </div>
       </article>
@@ -112,6 +65,7 @@ const Categories = ({
 Categories.propTypes = {
   categories: PropTypes.array.isRequired,
   currentCategory: PropTypes.string.isRequired,
+  currentRating: PropTypes.string.isRequired,
   handlePriceRangeChange: PropTypes.func.isRequired,
 };
 

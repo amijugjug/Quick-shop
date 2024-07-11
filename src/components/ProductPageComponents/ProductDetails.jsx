@@ -3,6 +3,7 @@ import Image from '../../components/atoms/Image';
 import AddToCartComponent from '../AddToCartComponent';
 import { AddToWishlist } from '../AddToWishlist';
 import PropTypes from 'prop-types';
+import Rating from 'react-rating';
 
 const ProductPage = ({ product }) => {
   return (
@@ -21,20 +22,13 @@ const ProductPage = ({ product }) => {
         <div style={styles.detailsContainer}>
           <div style={styles.categoryContainer}>
             <span style={styles.category}>{product.category}</span>
-            {/* Uncomment and adjust the below code if you have the rating component */}
-            {/* 
             <div style={styles.ratingContainer}>
-              {[...Array(Math.floor(product.rating.rate))].map((_, i) => (
-                <span key={i}>
-                  <Star style={styles.star} />
-                </span>
-              ))}
-              {product.rating.rate % 1 !== 0 && (
-                <StarHalf style={styles.halfStar} />
-              )}
-              <span style={styles.ratingText}>({product.rating.count} ratings)</span>
-            </div> 
-            */}
+              <Rating initialRating={product?.rating?.rate} readonly />
+              <span style={styles.ratingText}>
+                ({product?.rating?.count} ratings)
+              </span>
+            </div>
+
             <h1 style={styles.title}>{product.title}</h1>
             <p style={styles.description}>{product.description}</p>
           </div>

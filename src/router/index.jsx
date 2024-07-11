@@ -10,23 +10,26 @@ import ProductDetailPage from '../pages/ProductDetailPage';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import NotFoundPage from '../pages/NotFound';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 const AppRouter = () => {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route exact path="/" Component={HomePage} />
-        <Route path="/products" Component={ProductPage} />
-        <Route path="/products/:id" Component={ProductDetailPage} />
-        <Route path="/profile/:username" Component={ProfilePage} />
-        <Route path="/wishlist" Component={WishlistPage} />
-        <Route path="/checkout" Component={CheckoutPage} />
-        <Route path="/login" Component={Login} />
-        <Route path="/register" Component={Register} />
-        <Route path="*" Component={NotFoundPage} />
-      </Routes>
-      <Footer />
+      <ErrorBoundary>
+        <Navbar />
+        <Routes>
+          <Route exact path="/" Component={HomePage} />
+          <Route path="/products" Component={ProductPage} />
+          <Route path="/products/:id" Component={ProductDetailPage} />
+          <Route path="/profile/:username" Component={ProfilePage} />
+          <Route path="/wishlist" Component={WishlistPage} />
+          <Route path="/checkout" Component={CheckoutPage} />
+          <Route path="/login" Component={Login} />
+          <Route path="/register" Component={Register} />
+          <Route path="*" Component={NotFoundPage} />
+        </Routes>
+        <Footer />
+      </ErrorBoundary>
     </Router>
   );
 };
