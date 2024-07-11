@@ -17,11 +17,15 @@ const CheckoutPage = () => {
     console.log('this ran successfully');
   }, []);
 
+  const calculateTotalItemsInCart = () => {
+    return cartArray.reduce((acc, curr) => acc + curr.count, 0);
+  };
+
   return (
     <Cart
       items={cartArray}
       title={CART}
-      totalItems={cartArray.length}
+      totalItems={calculateTotalItemsInCart()}
       isWishlist={false}
     />
   );
