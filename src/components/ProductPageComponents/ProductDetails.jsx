@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Image from '../../components/atoms/Image';
 import AddToCartComponent from '../AddToCartComponent';
 import { AddToWishlist } from '../AddToWishlist';
+import PropTypes from 'prop-types';
 
 const ProductPage = ({ product }) => {
   return (
@@ -54,6 +55,19 @@ const ProductPage = ({ product }) => {
   );
 };
 
+ProductPage.propTypes = {
+  product: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.shape({
+      rate: PropTypes.number.isRequired,
+      count: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 const styles = {
   container: {
     display: 'flex',

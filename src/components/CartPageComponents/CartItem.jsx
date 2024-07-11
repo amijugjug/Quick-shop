@@ -1,12 +1,13 @@
 import AddToCartComponent from '../AddToCartComponent';
 import { RemoveFromWishlist } from '../AddToWishlist';
 import Image from '../../components/atoms/Image';
+import PropTypes from 'prop-types';
 
 const CartItem = ({ item, isWishlist }) => {
   return (
     <div style={styles.cartItem}>
       <div style={styles.imageContainer}>
-        <Image src={item.image} alt={item.name} style={styles.image} />
+        <Image src={item.image} alt={item.title} style={styles.image} />
       </div>
       <div style={styles.detailsContainer}>
         <div style={styles.textContainer}>
@@ -20,6 +21,22 @@ const CartItem = ({ item, isWishlist }) => {
       </div>
     </div>
   );
+};
+CartItem.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    rating: PropTypes.shape({
+      rate: PropTypes.number.isRequired,
+      count: PropTypes.number.isRequired,
+    }).isRequired,
+    count: PropTypes.number.isRequired,
+  }).isRequired,
+  isWishlist: PropTypes.bool,
 };
 
 const styles = {

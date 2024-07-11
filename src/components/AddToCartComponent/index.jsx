@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+
+import PropTypes from 'prop-types';
 import Button from '../atoms/Button';
 import { getUserFromLS, verifySession } from '../../services/auth.service';
 import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
@@ -18,7 +20,7 @@ const AddToCartComponent = ({ showCount, product }) => {
     const user = getUserFromLS(decryptedUserName);
     const token = user.token;
     if (user) {
-      if (user.cart.hasOwnProperty(product.id)) {
+      if (Object.prototype.hasOwnProperty.call(user.cart, product.id)) {
         user.cart[product.id].count++;
       } else {
         user.cart[product.id] = product;
@@ -41,7 +43,7 @@ const AddToCartComponent = ({ showCount, product }) => {
     const user = getUserFromLS(decryptedUserName);
     const token = user.token;
     if (user) {
-      if (user.cart.hasOwnProperty(product.id)) {
+      if (Object.prototype.hasOwnProperty.call(user.cart, product.id)) {
         user.cart[product.id].count--;
         console.log('Removing product from cart', user.cart[product.id]?.count);
         if (user.cart[product.id]?.count === 0) {
@@ -61,9 +63,7 @@ const AddToCartComponent = ({ showCount, product }) => {
   useEffect(() => {
     verifySession();
     const decryptedUserName = getCookie('token');
-    const db = JSON.parse(getLocalStorageItem(USERS_DB));
     const user = getUserFromLS(decryptedUserName);
-    const token = user.token;
     if (user) {
       setCount(user.cart[product.id]?.count ?? 0);
     }
@@ -101,6 +101,23 @@ const AddToCartComponent = ({ showCount, product }) => {
       />
     </div>
   );
+};
+
+AddToCartComponent.propTypes = {
+  showCount: PropTypes.bool.isRequired,
+  product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    rating: PropTypes.shape({
+      rate: PropTypes.number.isRequired,
+      count: PropTypes.number.isRequired,
+    }).isRequired,
+    count: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default AddToCartComponent;

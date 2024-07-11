@@ -1,4 +1,5 @@
 import CartItem from './CartItem';
+import PropTypes from 'prop-types';
 import { getUserFromLS, verifySession } from '../../services/auth.service';
 import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
 import {
@@ -37,6 +38,11 @@ const CartHeader = ({ title, totalItems }) => {
       <h1 style={totalItemsStyles}>Total Items: {totalItems}</h1>
     </div>
   );
+};
+
+CartHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+  totalItems: PropTypes.number.isRequired,
 };
 
 const Cart = ({
@@ -138,6 +144,14 @@ const Cart = ({
       )}
     </>
   );
+};
+
+Cart.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
+  isWishlist: PropTypes.bool,
+  totalItems: PropTypes.number.isRequired,
+  type: PropTypes.oneOf(['orders', 'previousOrders']),
 };
 
 const styles = {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import s from './Dropdown.module.css';
 import Image from '../Image';
+import PropTypes from 'prop-types';
 
 const Dropdown = ({
   options,
@@ -50,6 +51,19 @@ const Dropdown = ({
       )}
     </div>
   );
+};
+
+Dropdown.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onSelect: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  placeholderImage: PropTypes.string,
+  onDropDownClick: PropTypes.func,
 };
 
 export default Dropdown;

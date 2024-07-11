@@ -1,4 +1,5 @@
 import s from './Label.module.css';
+import PropTypes from 'prop-types';
 
 const Label = ({
   title,
@@ -26,6 +27,18 @@ const Label = ({
       {title}
     </label>
   );
+};
+
+Label.propTypes = {
+  title: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  size: PropTypes.string,
+  weight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  color: PropTypes.string,
+  lineHeight: PropTypes.string,
+  textAlign: PropTypes.oneOf(['left', 'right', 'center', 'justify']),
+  cursor: PropTypes.string,
+  alignSelf: PropTypes.string,
 };
 
 export default Label;

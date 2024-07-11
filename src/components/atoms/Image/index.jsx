@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const Image = ({ src, alt, width, height, placeholderSrc, ...props }) => {
   const [imgSrc, setImgSrc] = useState(src);
   const [isError, setIsError] = useState(false);
 
   const handleError = () => {
-    setImgSrc(placeholderSrc || '/placeholder-image.png');
+    setImgSrc(
+      placeholderSrc || `https://via.placeholder.com/${width}x${height}`
+    );
     setIsError(true);
   };
 
@@ -15,11 +18,11 @@ const Image = ({ src, alt, width, height, placeholderSrc, ...props }) => {
 
   return (
     <img
-      src={imgSrc}
+      src={!isError ? imgSrc : placeholderSrc}
       alt={alt}
       width={width}
       height={height}
-      // onError={handleError}
+      onError={handleError}
       {...props}
       style={{
         width: width ? `${width}px` : 'auto',
@@ -28,6 +31,15 @@ const Image = ({ src, alt, width, height, placeholderSrc, ...props }) => {
       }}
     />
   );
+};
+
+Image.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  placeholderSrc: PropTypes.string,
+  style: PropTypes.object,
 };
 
 export default Image;

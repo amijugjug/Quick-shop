@@ -5,7 +5,7 @@ import Input from '../Input';
 import Button from '../atoms/Button';
 
 import { INPUT_TYPE, LOGIN_MODAL_TEXT } from '../../constants';
-import { useModal } from '../../context/Modal.context';
+// import { useModal } from '../../context/Modal.context';
 import { login } from '../../services/auth.service';
 import { useNavigate } from 'react-router-dom';
 
@@ -66,7 +66,7 @@ const LoginComponent = () => {
 };
 
 const Login = () => {
-  const { modal } = useModal();
+  // const { modal } = useModal();
   // if (!modal) return;
   return (
     <Portal>

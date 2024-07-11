@@ -1,4 +1,5 @@
 import s from './Modal.module.css';
+import PropTypes from 'prop-types';
 import Label from '../atoms/Label';
 import { Link } from 'react-router-dom';
 
@@ -24,10 +25,21 @@ const FooterText = ({
   );
 };
 
+FooterText.propTypes = {
+  statement: PropTypes.string.isRequired,
+  redirectionText: PropTypes.string,
+  redirectionLink: PropTypes.string,
+};
+
+FooterText.defaultProps = {
+  redirectionText: '',
+  redirectionLink: '',
+};
+
 const Modal = ({ children, props }) => {
   const {
-    showCloseButton = false,
-    closeButtonOnClick = () => {},
+    // showCloseButton = false,
+    // closeButtonOnClick = () => {},
     headerText = '',
     descriptionText = '',
     footerStatementText = '',
@@ -51,6 +63,29 @@ const Modal = ({ children, props }) => {
       />
     </div>
   );
+};
+
+Modal.propTypes = {
+  children: PropTypes.node.isRequired,
+  props: PropTypes.shape({
+    showCloseButton: PropTypes.bool,
+    closeButtonOnClick: PropTypes.func,
+    headerText: PropTypes.string,
+    descriptionText: PropTypes.string,
+    footerStatementText: PropTypes.string,
+    redirectionText: PropTypes.string,
+    redirectionLink: PropTypes.string,
+  }),
+};
+
+Modal.defaultProps = {
+  showCloseButton: false,
+  closeButtonOnClick: () => {},
+  headerText: '',
+  descriptionText: '',
+  footerStatementText: '',
+  redirectionText: '',
+  redirectionLink: '',
 };
 
 export default Modal;

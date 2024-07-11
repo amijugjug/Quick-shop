@@ -1,5 +1,5 @@
 import Image from '../atoms/Image';
-
+import PropTypes from 'prop-types';
 import WishlistIcon from '../../static/assets/wishlist-icon.svg';
 import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
 import {
@@ -71,6 +71,23 @@ export const AddToWishlist = ({ showImage = false, product }) => {
   );
 };
 
+AddToWishlist.propTypes = {
+  showImage: PropTypes.bool,
+  product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    rating: PropTypes.shape({
+      rate: PropTypes.number.isRequired,
+      count: PropTypes.number.isRequired,
+    }).isRequired,
+    count: PropTypes.number.isRequired,
+  }).isRequired,
+};
+
 export const RemoveFromWishlist = ({ product }) => {
   const { showToast, handleShowToast } = useToast();
   const removeItemFromWishlist = () => {
@@ -80,7 +97,7 @@ export const RemoveFromWishlist = ({ product }) => {
     const user = getUserFromLS(decryptedUserName);
     const token = user.token;
     if (user) {
-      if (user.wishlist.hasOwnProperty(product.id)) {
+      if (Object.prototype.hasOwnProperty.call(user.wishlist, product.id)) {
         delete user.wishlist[product.id];
       }
       db[token] = user;
@@ -114,4 +131,20 @@ export const RemoveFromWishlist = ({ product }) => {
       )}
     </>
   );
+};
+
+RemoveFromWishlist.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    rating: PropTypes.shape({
+      rate: PropTypes.number.isRequired,
+      count: PropTypes.number.isRequired,
+    }).isRequired,
+    count: PropTypes.number.isRequired,
+  }).isRequired,
 };

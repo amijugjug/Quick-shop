@@ -1,6 +1,7 @@
 import Image from '../../components/atoms/Image';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/atoms/Button';
+import PropTypes from 'prop-types';
 
 import ModernChicWardrobewithIndustrialFlair from '../../static/assets/Modern Chic Wardrobe with Industrial Flair.jpg';
 import UrbanSophisticate from '../../static/assets/Urban Sophisticate.jpg';
@@ -369,3 +370,11 @@ const HomePage = () => {
   );
 };
 export default HomePage;
+
+HeroSection.propTypes = {
+  navigate: PropTypes.func.isRequired,
+};
+
+GridSection.propTypes = {
+  navigate: PropTypes.func.isRequired,
+};

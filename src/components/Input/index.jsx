@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import Image from '../atoms/Image';
 import s from './Input.module.css';
 import { INPUT_TYPE } from '../../constants';
@@ -38,6 +39,15 @@ const Input = ({
       </span>
     </div>
   );
+};
+
+Input.propTypes = {
+  title: PropTypes.string.isRequired,
+  placeHolder: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['text', 'password']).isRequired,
+  showEyeIcon: PropTypes.bool,
+  value: PropTypes.string,
+  handleInputChange: PropTypes.func,
 };
 
 export default Input;

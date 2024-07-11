@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import PropTypes from 'prop-types';
+
 const ToastNotification = ({
   type,
   message,
@@ -72,6 +74,24 @@ const ToastNotification = ({
   }, []);
 
   return <ToastContainer />;
+};
+
+ToastNotification.propTypes = {
+  type: PropTypes.oneOf(['success', 'error', 'info', 'warning']),
+  message: PropTypes.string.isRequired,
+  position: PropTypes.oneOf([
+    'top-right',
+    'top-center',
+    'top-left',
+    'bottom-right',
+    'bottom-center',
+    'bottom-left',
+  ]),
+  autoClose: PropTypes.number,
+  hideProgressBar: PropTypes.bool,
+  closeOnClick: PropTypes.bool,
+  pauseOnHover: PropTypes.bool,
+  draggable: PropTypes.bool,
 };
 
 export default ToastNotification;

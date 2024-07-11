@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import Portal from '../Portal';
 import Modal from '../Modal';
 import Input from '../Input';
 import Button from '../atoms/Button';
 
 import { INPUT_TYPE, REGISTER_MODAL_TEXT } from '../../constants';
-import { useModal } from '../../context/Modal.context';
+// import { useModal } from '../../context/Modal.context';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../../services/auth.service';
 import { isValidEmail } from '../../services/helpers/utils.helper';
@@ -63,6 +64,7 @@ const RegisterComponent = ({ onRegister = () => {} }) => {
       confirmPassword: state.confirmPassword,
     };
     register(postObj, navigate, '/');
+    onRegister();
   };
 
   return (
@@ -117,8 +119,11 @@ const RegisterComponent = ({ onRegister = () => {} }) => {
   );
 };
 
+RegisterComponent.propTypes = {
+  onRegister: PropTypes.func,
+};
 const Register = () => {
-  const { modal } = useModal();
+  // const { modal } = useModal();
   // if (!modal) return;
   return (
     <Portal>

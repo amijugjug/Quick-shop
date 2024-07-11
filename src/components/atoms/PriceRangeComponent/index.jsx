@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const PriceRangeComponent = ({ min, max, onChange }) => {
   const [value, setValue] = useState([min, max]);
@@ -41,3 +42,9 @@ const PriceRangeComponent = ({ min, max, onChange }) => {
 };
 
 export default PriceRangeComponent;
+
+PriceRangeComponent.propTypes = {
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
+};

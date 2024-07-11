@@ -1,4 +1,5 @@
 import Cart from '../CartPageComponents/Cart';
+import PropTypes from 'prop-types';
 
 const UserDashboard = ({ user }) => {
   const styles = {
@@ -48,4 +49,18 @@ const UserDashboard = ({ user }) => {
   );
 };
 
+UserDashboard.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string,
+    confirmPassword: PropTypes.string,
+    token: PropTypes.string,
+    wishlist: PropTypes.object,
+    previousOrders: PropTypes.object,
+    cart: PropTypes.object,
+    totalCartItemCount: PropTypes.number,
+  }).isRequired,
+};
 export default UserDashboard;

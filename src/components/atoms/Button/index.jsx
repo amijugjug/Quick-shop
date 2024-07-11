@@ -1,4 +1,5 @@
 import s from './Button.module.css';
+import PropTypes from 'prop-types';
 
 const Button = ({
   text,
@@ -40,6 +41,15 @@ const Button = ({
       </span>
     </button>
   );
+};
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+  size: PropTypes.oneOf(['large', 'medium', 'small', 'rounded']),
+  align: PropTypes.string,
+  backgorundColor: PropTypes.string,
 };
 
 export default Button;

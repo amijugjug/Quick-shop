@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import PriceRangeComponent from '../atoms/PriceRangeComponent';
+import PropTypes from 'prop-types';
 
 const CategoryItems = ({ categories, currentCategory }) => {
   const styles = {
@@ -34,7 +35,6 @@ const CategoryItems = ({ categories, currentCategory }) => {
         All
       </Link>
       {categories?.map((cat) => {
-        const isActive = currentCategory === cat;
         const link = `/products?category=${cat}`;
         return (
           <Link
@@ -53,6 +53,11 @@ const CategoryItems = ({ categories, currentCategory }) => {
       })}
     </div>
   );
+};
+
+CategoryItems.propTypes = {
+  categories: PropTypes.array.isRequired,
+  currentCategory: PropTypes.string.isRequired,
 };
 
 const Categories = ({
@@ -102,6 +107,12 @@ const Categories = ({
       </article>
     </>
   );
+};
+
+Categories.propTypes = {
+  categories: PropTypes.array.isRequired,
+  currentCategory: PropTypes.string.isRequired,
+  handlePriceRangeChange: PropTypes.func.isRequired,
 };
 
 export default Categories;
