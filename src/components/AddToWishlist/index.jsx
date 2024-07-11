@@ -44,6 +44,7 @@ export const AddToWishlist = ({ showImage = false, product }) => {
       {showImage ? (
         <Image
           src={WishlistIcon}
+          alt="Wishlist Icon"
           onClick={addItemToWishlist}
           width={48}
           height={48}

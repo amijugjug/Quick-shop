@@ -26,7 +26,6 @@ const Navbar = () => {
       >
         <WishlistOption />
         <ShoppingCartOption />
-        {/* <Image src={ShoppingCart} width={42} height={42} alt="Shopping Cart" /> */}
         <UserAvatarOptions />
       </div>
     </header>

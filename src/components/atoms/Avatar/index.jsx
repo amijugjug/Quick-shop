@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import s from './Avatar.module.css';
 import ProfilePic from '@/../public/static/ProfilePic.svg';
+import Image from '../Image';
+import PropTypes from 'prop-types';
 
 const Avatar = ({ imageUrl = '', alt = '' }) => {
   const [imageError, setImageError] = useState(false);
@@ -28,6 +30,11 @@ const Avatar = ({ imageUrl = '', alt = '' }) => {
       )}
     </div>
   );
+};
+
+Avatar.propTypes = {
+  imageUrl: PropTypes.string,
+  alt: PropTypes.string,
 };
 
 export default Avatar;

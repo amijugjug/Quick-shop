@@ -26,7 +26,14 @@ const Dropdown = ({
 
   const renderPlaceholder = () => {
     if (placeholderImage) {
-      return <Image src={placeholderImage} width={48} height={48} />;
+      return (
+        <Image
+          src={placeholderImage}
+          alt="user-profile-option"
+          width={48}
+          height={48}
+        />
+      );
     } else if (placeholder) return <span>{placeholder}</span>;
     else selectedOption.label;
   };
