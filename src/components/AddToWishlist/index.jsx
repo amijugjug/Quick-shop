@@ -9,6 +9,8 @@ import {
 } from '../../services/helpers/storageHelpers/localstorage.helper';
 import { USERS_DB } from '../../constants';
 import { getUserFromLS, verifySession } from '../../services/auth.service';
+import ToastNotification from '../ToastNotification';
+import { useToast } from '../../hooks/useToast.hook';
 
 const styles = {
   category: {
@@ -23,6 +25,7 @@ const styles = {
   },
 };
 export const AddToWishlist = ({ showImage = false, product }) => {
+  const { showToast, handleShowToast } = useToast();
   const addItemToWishlist = () => {
     verifySession();
     const decryptedUserName = getCookie('token');
@@ -33,24 +36,44 @@ export const AddToWishlist = ({ showImage = false, product }) => {
       user.wishlist[product.id] = product;
       db[token] = user;
       setLocalStorageItem(USERS_DB, JSON.stringify(db));
+      handleShowToast();
     }
   };
-  return showImage ? (
-    <Image
-      src={WishlistIcon}
-      onClick={addItemToWishlist}
-      width={48}
-      height={48}
-      style={{ alignSelf: 'center' }}
-    />
-  ) : (
-    <span style={styles.category} onClick={addItemToWishlist}>
-      Add to wishlist
-    </span>
+
+  return (
+    <>
+      {showImage ? (
+        <Image
+          src={WishlistIcon}
+          onClick={addItemToWishlist}
+          width={48}
+          height={48}
+          style={{ alignSelf: 'center' }}
+        />
+      ) : (
+        <span style={styles.category} onClick={addItemToWishlist}>
+          Add to wishlist
+        </span>
+      )}
+
+      {showToast ? (
+        <ToastNotification
+          type="success"
+          message="Item added to wishlist"
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          closeOnClick={true}
+          pauseOnHover={true}
+          draggable={true}
+        />
+      ) : null}
+    </>
   );
 };
 
 export const RemoveFromWishlist = ({ product }) => {
+  const { showToast, handleShowToast } = useToast();
   const removeItemFromWishlist = () => {
     verifySession();
     const decryptedUserName = getCookie('token');
@@ -63,14 +86,33 @@ export const RemoveFromWishlist = ({ product }) => {
       }
       db[token] = user;
       setLocalStorageItem(USERS_DB, JSON.stringify(db));
+      handleShowToast();
     }
   };
   return (
-    <span
-      style={{ ...styles.category, backgroundColor: '#d9534f', color: '#fff' }}
-      onClick={removeItemFromWishlist}
-    >
-      Remove Item
-    </span>
+    <>
+      <span
+        style={{
+          ...styles.category,
+          backgroundColor: '#d9534f',
+          color: '#fff',
+        }}
+        onClick={removeItemFromWishlist}
+      >
+        Remove Item
+      </span>
+      {showToast && (
+        <ToastNotification
+          type="success"
+          message="Item removed from wishlist"
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          closeOnClick={true}
+          pauseOnHover={true}
+          draggable={true}
+        />
+      )}
+    </>
   );
 };

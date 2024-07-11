@@ -7,6 +7,8 @@ import {
   setLocalStorageItem,
 } from '../../services/helpers/storageHelpers/localstorage.helper';
 import { USERS_DB } from '../../constants';
+import ToastNotification from '../ToastNotification';
+import { useToast } from '../../hooks/useToast.hook';
 
 const CartHeader = ({ title, totalItems }) => {
   const headerStyles = {
@@ -45,6 +47,7 @@ const Cart = ({
   totalItems,
   type = 'orders',
 }) => {
+  const { showToast, handleShowToast } = useToast();
   const onClearCartClick = () => {
     verifySession();
     const decryptedUserName = getCookie('token');
@@ -75,6 +78,12 @@ const Cart = ({
       console.log('delete');
     }
   };
+  const onCheckoutClick = () => {
+    if (totalItems > 5) {
+      handleShowToast();
+      // onCheckout();
+    }
+  };
   return (
     <>
       <CartHeader title={title} totalItems={totalItems} />
@@ -103,7 +112,12 @@ const Cart = ({
                     >
                       Clear Cart
                     </button>
-                    <button style={styles.checkoutButton}>Checkout</button>
+                    <button
+                      style={styles.checkoutButton}
+                      onClick={onCheckoutClick}
+                    >
+                      Checkout
+                    </button>
                   </>
                 )}
               </div>
@@ -111,6 +125,18 @@ const Cart = ({
           </>
         )}
       </div>
+      {showToast && (
+        <ToastNotification
+          type="error"
+          message="Can not proceed with more than 5 items"
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          closeOnClick={true}
+          pauseOnHover={true}
+          draggable={true}
+        />
+      )}
     </>
   );
 };
