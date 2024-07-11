@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/atoms/Button';
 import PropTypes from 'prop-types';
 
-import ModernChicWardrobewithIndustrialFlair from '../../static/assets/Modern Chic Wardrobe with Industrial Flair.jpg';
-import UrbanSophisticate from '../../static/assets/Urban Sophisticate.jpg';
 import ContemplativeAthleisure from '../../static/assets/Contemplative Athleisure.jpg';
 import VibrantAthleticWearCollection from '../../static/assets/Vibrant Athletic Wear Collection.jpg';
 import ContemplativeFashionPortrait from '../../static/assets/Contemplative Fashion Portrait.jpg';
@@ -12,6 +10,7 @@ import { useEffect } from 'react';
 import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
 import { getUserFromLS } from '../../services/auth.service';
 import { useUser } from '../../context/User.context';
+import styles from './HomePage.module.css';
 
 function HeroSection({ navigate }) {
   return (
@@ -29,27 +28,25 @@ function HeroSection({ navigate }) {
           display: 'flex',
           width: 'auto',
           maxWidth: '100%',
-          height: 'auto',
+          height: '500px',
           maxHeight: '100%',
           position: 'relative',
         }}
       >
-        <Image
-          loading="eager"
-          width={1400}
-          height={500}
-          priority={true}
-          src={ModernChicWardrobewithIndustrialFlair}
-          alt="Modern Chic Wardrobe with Industrial Flair"
-        />
-        <Image
-          loading="eager"
-          width={600}
-          height={500}
-          priority={true}
-          src={UrbanSophisticate}
-          alt="Urban Sophisticate"
-        />
+        <div className={styles.area}>
+          <ul className={styles.circles}>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
 
         <div
           style={{
