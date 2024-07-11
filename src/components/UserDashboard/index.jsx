@@ -1,11 +1,9 @@
 import React from 'react';
+import Cart from '../CartPageComponents/Cart';
 
 const UserDashboard = ({ user, orders }) => {
   const styles = {
     dashboardContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
       margin: '20px',
     },
     userInfo: {
@@ -16,30 +14,15 @@ const UserDashboard = ({ user, orders }) => {
       maxWidth: '600px',
       marginBottom: '20px',
     },
-    ordersContainer: {
-      border: '1px solid #ccc',
-      padding: '20px',
-      borderRadius: '8px',
-      width: '80%',
-      maxWidth: '600px',
-    },
     ordersList: {
-      maxHeight: '200px',
+      maxHeight: '500px',
       overflowY: 'auto',
       marginTop: '10px',
-    },
-    orderItem: {
-      padding: '10px',
-      borderBottom: '1px solid #ddd',
-    },
-    orderItemLast: {
-      borderBottom: 'none',
     },
     heading: {
       margin: '0 0 10px',
     },
   };
-  console.log('userin:', user);
 
   return (
     <div style={styles.dashboardContainer}>
@@ -55,28 +38,12 @@ const UserDashboard = ({ user, orders }) => {
           <strong>Username:</strong> {user.username}
         </p>
       </div>
-      <div style={styles.ordersContainer}>
-        <h3 style={styles.heading}>Previous Orders</h3>
-        <div style={styles.ordersList}>
-          {orders?.length > 0 ? (
-            orders.map((order, index) => (
-              <div
-                key={index}
-                style={
-                  index === orders.length - 1
-                    ? { ...styles.orderItem, ...styles.orderItemLast }
-                    : styles.orderItem
-                }
-              >
-                <p>
-                  <strong>Order #{index + 1}:</strong> {order}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p>No previous orders</p>
-          )}
-        </div>
+      <div style={styles.ordersList}>
+        <Cart
+          title={'Your Previous Orders'}
+          totalItems={0}
+          type="previousOrders"
+        />
       </div>
     </div>
   );

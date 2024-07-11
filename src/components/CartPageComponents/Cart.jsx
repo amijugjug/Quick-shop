@@ -38,7 +38,13 @@ const CartHeader = ({ title, totalItems }) => {
   );
 };
 
-const Cart = ({ title, items, isWishlist = false, totalItems }) => {
+const Cart = ({
+  title,
+  items,
+  isWishlist = false,
+  totalItems,
+  type = 'orders',
+}) => {
   const onClearCartClick = () => {
     verifySession();
     const decryptedUserName = getCookie('token');
@@ -80,26 +86,28 @@ const Cart = ({ title, items, isWishlist = false, totalItems }) => {
             {items?.map((item) => (
               <CartItem key={item.id} item={item} isWishlist={isWishlist} />
             ))}{' '}
-            <div style={styles.checkoutContainer}>
-              {isWishlist ? (
-                <button
-                  style={styles.clearCartButton}
-                  onClick={onClearWishlistClick}
-                >
-                  Clear Wishlist
-                </button>
-              ) : (
-                <>
+            {type === 'previousOrders' ? null : (
+              <div style={styles.checkoutContainer}>
+                {isWishlist ? (
                   <button
                     style={styles.clearCartButton}
-                    onClick={onClearCartClick}
+                    onClick={onClearWishlistClick}
                   >
-                    Clear Cart
+                    Clear Wishlist
                   </button>
-                  <button style={styles.checkoutButton}>Checkout</button>
-                </>
-              )}
-            </div>
+                ) : (
+                  <>
+                    <button
+                      style={styles.clearCartButton}
+                      onClick={onClearCartClick}
+                    >
+                      Clear Cart
+                    </button>
+                    <button style={styles.checkoutButton}>Checkout</button>
+                  </>
+                )}
+              </div>
+            )}
           </>
         )}
       </div>

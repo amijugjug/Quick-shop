@@ -1,4 +1,6 @@
 export const USERS_DB = 'users_db';
+export const CART = 'Your Cart';
+export const WISHLIST = 'Your Wishlist';
 export const INPUT_TYPE = {
   TEXT: 'text',
   PASSWORD: 'password',

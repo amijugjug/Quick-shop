@@ -47,12 +47,23 @@ export const logout = async (navigateTo) => {
 };
 
 export const register = async (formData, navigate, pathToNavigate) => {
+  const constructNewUser = (formData) => {
+    const token = formData.username;
+    return {
+      ...formData,
+      token,
+      wishlist: {},
+      previousorders: {},
+      cart: {},
+      totalCartItemCount: 0,
+    };
+  };
   try {
     const id = await registerUser(formData);
     setCookie('id', id, 7);
 
-    const token = formData.username;
-    const newUser = { ...formData, token };
+    const newUser = constructNewUser(formData);
+    const { token } = newUser;
 
     // Storing the new users to local storage because they api is not available currrently.
     const existingUsers = JSON.parse(getLocalStorageItem(USERS_DB));
@@ -102,14 +113,19 @@ export const verifySession = () => {
   return { isAuth: true };
 };
 
-export const checkValidUser = (username) => {
-  const decryptedUserName = username;
+export const getUserFromLS = (username) => {
   const users_db = JSON.parse(getLocalStorageItem(USERS_DB));
   if (!users_db) return false;
 
-  const user = users_db[decryptedUserName];
+  const user = users_db[username];
   if (!user) return false;
 
+  return user;
+};
+
+export const checkValidUser = (username) => {
+  const decryptedUserName = username;
+  const user = getUserFromLS(decryptedUserName);
   const currentLoggedInUser = getCookie('token');
   if (currentLoggedInUser === decryptedUserName) return user;
   return null;
