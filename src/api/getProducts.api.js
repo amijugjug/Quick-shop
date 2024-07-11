@@ -2,7 +2,7 @@ import { apiGet } from '../services/helpers/apiHelpers/axios.helper';
 
 export const getProducts = async (category = '') => {
   try {
-    const url = '/products';
+    let url = '/products';
     if (category) {
       url += `/category/${category}`;
     }
