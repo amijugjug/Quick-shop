@@ -1,8 +1,7 @@
 import CartItem from './CartItem';
 import PropTypes from 'prop-types';
 import { verifySession } from '../../services/auth.service';
-import ToastNotification from '../ToastNotification';
-import { useToast } from '../../hooks/useToast.hook';
+import { useToast } from '../../context/Toast.context';
 import { useUser } from '../../context/User.context';
 
 const CartHeader = ({ title, totalItems }) => {
@@ -47,7 +46,7 @@ const Cart = ({
   totalItems,
   type = 'orders',
 }) => {
-  const { showToast, handleShowToast } = useToast();
+  const { notify } = useToast();
   const { clearCart, clearWishlist, updatePreviousOrders } = useUser();
 
   const onClearCartClick = () => {
@@ -62,7 +61,14 @@ const Cart = ({
 
   const onCheckoutClick = () => {
     if (totalItems > 5) {
-      handleShowToast();
+      notify('error', 'Can not proceed with more than 5 items', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     } else {
       updatePreviousOrders(items);
     }
@@ -109,18 +115,6 @@ const Cart = ({
           </>
         )}
       </div>
-      {showToast && (
-        <ToastNotification
-          type="error"
-          message="Can not proceed with more than 5 items"
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          closeOnClick={true}
-          pauseOnHover={true}
-          draggable={true}
-        />
-      )}
     </>
   );
 };

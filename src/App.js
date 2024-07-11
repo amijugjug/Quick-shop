@@ -1,4 +1,5 @@
 import { ModalProvider } from './context/Modal.context';
+import { ToastProvider } from './context/Toast.context';
 import { UserProvider } from './context/User.context';
 import { useDetectDevice } from './hooks/useDetectDevice.hook';
 import AppRouter from './router';
@@ -11,9 +12,11 @@ function App() {
   }
   return (
     <UserProvider>
-      <ModalProvider>
-        <AppRouter />
-      </ModalProvider>
+      <ToastProvider>
+        <ModalProvider>
+          <AppRouter />
+        </ModalProvider>
+      </ToastProvider>
     </UserProvider>
   );
 }

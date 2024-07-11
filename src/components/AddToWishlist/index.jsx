@@ -2,9 +2,8 @@ import Image from '../atoms/Image';
 import PropTypes from 'prop-types';
 import WishlistIcon from '../../static/assets/wishlist-icon.svg';
 import { verifySession } from '../../services/auth.service';
-import ToastNotification from '../ToastNotification';
-import { useToast } from '../../hooks/useToast.hook';
 import { useUser } from '../../context/User.context';
+import { useToast } from '../../context/Toast.context';
 
 const styles = {
   category: {
@@ -19,12 +18,19 @@ const styles = {
   },
 };
 export const AddToWishlist = ({ showImage = false, product }) => {
-  const { showToast, handleShowToast } = useToast();
+  const { notify } = useToast();
   const { addItemInWishlist } = useUser();
   const addItemClick = () => {
     verifySession();
     if (addItemInWishlist(product)) {
-      handleShowToast();
+      notify('success', 'Item added to wishlist', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     }
   };
 
@@ -44,19 +50,6 @@ export const AddToWishlist = ({ showImage = false, product }) => {
           Add to wishlist
         </span>
       )}
-
-      {showToast ? (
-        <ToastNotification
-          type="success"
-          message="Item added to wishlist"
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          closeOnClick={true}
-          pauseOnHover={true}
-          draggable={true}
-        />
-      ) : null}
     </>
   );
 };
@@ -79,13 +72,20 @@ AddToWishlist.propTypes = {
 };
 
 export const RemoveFromWishlist = ({ product }) => {
-  const { showToast, handleShowToast } = useToast();
+  const { notify } = useToast();
   const { removeItemFromWishlist } = useUser();
   const removeItem = () => {
     verifySession();
 
     if (removeItemFromWishlist(product)) {
-      handleShowToast();
+      notify('success', 'Item removed from wishlist', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     }
   };
   return (
@@ -100,18 +100,6 @@ export const RemoveFromWishlist = ({ product }) => {
       >
         Remove Item
       </span>
-      {showToast && (
-        <ToastNotification
-          type="success"
-          message="Item removed from wishlist"
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          closeOnClick={true}
-          pauseOnHover={true}
-          draggable={true}
-        />
-      )}
     </>
   );
 };
