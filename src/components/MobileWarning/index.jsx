@@ -1,4 +1,4 @@
-import styles from './MobileWarning.module.scss';
+import styles from './MobileWarning.module.css';
 const MobileWarning = () => {
   return (
     <div className={styles.container}>
