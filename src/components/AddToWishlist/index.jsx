@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from '../atoms/Image';
 
 import WishlistIcon from '../../static/assets/wishlist-icon.svg';

@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import CartItem from './CartItem';
 import { getUserFromLS, verifySession } from '../../services/auth.service';
 import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Image = ({ src, alt, width, height, placeholderSrc, ...props }) => {
   const [imgSrc, setImgSrc] = useState(src);

@@ -3,7 +3,7 @@ import { useDetectDevice } from './hooks/useDetectDevice.hook';
 import AppRouter from './router';
 
 function App() {
-  const { deviceType, width } = useDetectDevice();
+  const { deviceType } = useDetectDevice();
   const isMobile = deviceType === 'mobile';
   if (isMobile) {
     return <div>Website is not accessible via phone</div>;

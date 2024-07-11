@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useState } from 'react';
 import Portal from '../Portal';
 import Modal from '../Modal';
 import Input from '../Input';

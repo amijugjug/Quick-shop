@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import UserDashboard from '../../components/UserDashboard';
 import { useParams } from 'react-router-dom';
 import { checkValidUser } from '../../services/auth.service';

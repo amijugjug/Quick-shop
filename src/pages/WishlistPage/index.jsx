@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Cart from '../../components/CartPageComponents/Cart';
 import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
 import { getLocalStorageItem } from '../../services/helpers/storageHelpers/localstorage.helper';

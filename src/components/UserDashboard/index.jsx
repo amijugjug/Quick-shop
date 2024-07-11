@@ -1,7 +1,6 @@
-import React from 'react';
 import Cart from '../CartPageComponents/Cart';
 
-const UserDashboard = ({ user, orders }) => {
+const UserDashboard = ({ user }) => {
   const styles = {
     dashboardContainer: {
       margin: '20px',

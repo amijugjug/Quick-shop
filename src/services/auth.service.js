@@ -3,10 +3,9 @@ import {
   setCookie,
   getCookie,
 } from './helpers/storageHelpers/cookie.helper';
-import { getToken } from '../api/getToken.api';
 import { registerUser } from '../api/registerUser.api';
 
-import { decodeToken } from 'react-jwt';
+// import { decodeToken } from 'react-jwt';
 
 import { USERS_DB } from '../constants';
 import {
@@ -19,7 +18,10 @@ export const login = async (formData, navigateTo, pathToNavigate) => {
     // Using local storage for login
     const localToken = formData.username;
     const existingUsers = JSON.parse(getLocalStorageItem(USERS_DB));
-    if (existingUsers && existingUsers.hasOwnProperty(localToken)) {
+    if (
+      existingUsers &&
+      Object.prototype.hasOwnProperty.call(existingUsers, localToken)
+    ) {
       setCookie('token', localToken, 7);
     } else {
       throw new Error(`User is not registerd`);
@@ -68,7 +70,7 @@ export const register = async (formData, navigate, pathToNavigate) => {
     // Storing the new users to local storage because they api is not available currrently.
     const existingUsers = JSON.parse(getLocalStorageItem(USERS_DB));
     if (existingUsers) {
-      if (existingUsers.hasOwnProperty(token)) {
+      if (Object.prototype.hasOwnProperty.call(existingUsers, token)) {
         throw new Error(`Username : ${formData.username} is not available`);
       }
       setLocalStorageItem(

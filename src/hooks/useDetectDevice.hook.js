@@ -10,7 +10,7 @@ export const useDetectDevice = () => {
 
   useEffect(() => {
     const userAgent = window.navigator.userAgent;
-    const windowWidth = window.innerWidth;
+    // const windowWidth = window.innerWidth;
 
     if (/Mobi|Android/i.test(userAgent)) {
       setDevice('mobile');

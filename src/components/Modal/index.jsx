@@ -1,7 +1,3 @@
-import React from 'react';
-
-import CloseButton from '../../static/assets/CloseButton.svg';
-
 import s from './Modal.module.css';
 import Label from '../atoms/Label';
 import { Link } from 'react-router-dom';

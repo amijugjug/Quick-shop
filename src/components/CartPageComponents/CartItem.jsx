@@ -1,12 +1,12 @@
-import React from 'react';
 import AddToCartComponent from '../AddToCartComponent';
 import { RemoveFromWishlist } from '../AddToWishlist';
+import Image from '../../components/atoms/Image';
 
 const CartItem = ({ item, isWishlist }) => {
   return (
     <div style={styles.cartItem}>
       <div style={styles.imageContainer}>
-        <img src={item.image} alt={item.name} style={styles.image} />
+        <Image src={item.image} alt={item.name} style={styles.image} />
       </div>
       <div style={styles.detailsContainer}>
         <div style={styles.textContainer}>
