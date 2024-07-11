@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './HomePage.module.css';
 import Button from '../../components/atoms/Button';
 import Image from '../../components/atoms/Image';
+import { useUser } from '../../context/User.context';
 import { isUserLoggedIn } from '../../services/auth.service';
 import ContemplativeAthleisure from '../../static/assets/Contemplative Athleisure.jpg';
 import ContemplativeFashionPortrait from '../../static/assets/Contemplative Fashion Portrait.jpg';
 import VibrantAthleticWearCollection from '../../static/assets/Vibrant Athletic Wear Collection.jpg';
-import { useUser } from '../../context/User.context';
-import { useEffect } from 'react';
 
 function HeroSection({ navigate }) {
   const handleNavigation = () => {
