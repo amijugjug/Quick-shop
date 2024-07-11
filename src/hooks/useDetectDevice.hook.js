@@ -1,30 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export const useDetectDevice = () => {
-  const [device, setDevice] = useState(null);
-  const [width, setWidth] = useState(null);
+const getDeviceType = () => {
+  const width = window.innerWidth;
 
-  function handleWindowSizeChange() {
-    setWidth(window.innerWidth);
+  if (width <= 768) {
+    return 'mobile';
   }
+  return 'desktop';
+};
+
+const useDetectDevice = () => {
+  const [deviceType, setDeviceType] = useState(null);
 
   useEffect(() => {
-    const userAgent = window.navigator.userAgent;
-    // const windowWidth = window.innerWidth;
+    const updateDeviceType = () => {
+      setDeviceType(getDeviceType());
+    };
 
-    if (/Mobi|Android/i.test(userAgent)) {
-      setDevice('mobile');
-    } else if (/iPad|iPhone|iPod/i.test(userAgent)) {
-      setDevice('tablet');
-    } else {
-      setDevice('desktop');
-    }
+    // Run on mount
+    updateDeviceType();
 
-    window.addEventListener('resize', handleWindowSizeChange);
+    window.addEventListener('resize', updateDeviceType);
     return () => {
-      window.removeEventListener('resize', handleWindowSizeChange);
+      window.removeEventListener('resize', updateDeviceType);
     };
   }, []);
 
-  return { device, width };
+  return deviceType;
 };
+
+export default useDetectDevice;
