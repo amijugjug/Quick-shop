@@ -20,13 +20,7 @@ CartHeader.propTypes = {
   totalItems: PropTypes.number.isRequired,
 };
 
-const Cart = ({
-  title,
-  items,
-  isWishlist = false,
-  totalItems,
-  type = 'orders',
-}) => {
+const Cart = ({ title, items, totalItems, type }) => {
   const { notify } = useToast();
   const { clearCart, clearWishlist, updatePreviousOrders } = useUser();
 
@@ -57,18 +51,20 @@ const Cart = ({
         ) : (
           <>
             {items?.map((item) => (
-              <CartItem key={item.id} item={item} isWishlist={isWishlist} />
+              <CartItem key={item.id} item={item} type={type} />
             ))}{' '}
-            {type === 'previousOrders' ? null : (
+            {type === 'previousorders' ? null : (
               <div className={styles.checkoutContainer}>
-                {isWishlist ? (
+                {type === 'wishlist' ? (
                   <button
                     className={styles.clearCartButton}
                     onClick={onClearWishlistClick}
                   >
                     Clear Wishlist
                   </button>
-                ) : (
+                ) : null}
+
+                {type === 'orders' ? (
                   <>
                     <button
                       className={styles.clearCartButton}
@@ -83,7 +79,7 @@ const Cart = ({
                       Checkout
                     </button>
                   </>
-                )}
+                ) : null}
               </div>
             )}
           </>
@@ -96,9 +92,8 @@ const Cart = ({
 Cart.propTypes = {
   title: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
-  isWishlist: PropTypes.bool,
   totalItems: PropTypes.number.isRequired,
-  type: PropTypes.oneOf(['orders', 'previousOrders']),
+  type: PropTypes.oneOf(['orders', 'previousorders', 'wishlist']).isRequired,
 };
 
 export default Cart;

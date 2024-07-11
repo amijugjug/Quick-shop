@@ -17,6 +17,7 @@ const CheckoutPage = () => {
       title={CART}
       totalItems={user?.totalCartItemCount ?? 0}
       isWishlist={false}
+      type="orders"
     />
   );
 };

@@ -32,7 +32,7 @@ const UserDashboard = () => {
         <Cart
           title={'Your Previous Orders'}
           totalItems={previousOrders.length}
-          type="previousOrders"
+          type="previousorders"
           items={previousOrders}
         />
       </div>

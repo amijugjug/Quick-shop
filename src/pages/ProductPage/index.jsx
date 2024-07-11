@@ -38,7 +38,7 @@ const ProductsPage = () => {
       );
       setFilteredList(filterByRating);
     }
-  }, [queryParams, productList.length, productList]);
+  }, [queryParams, productList?.length, productList]);
 
   const handlePriceRangeChange = (maxPrice) => {
     const filterByPrice = filteredList?.filter((p) => p.price < maxPrice);

@@ -5,7 +5,7 @@ import Image from '../../components/atoms/Image';
 import AddToCartComponent from '../AddToCartComponent';
 import { RemoveFromWishlist } from '../AddToWishlist';
 
-const CartItem = ({ item, isWishlist }) => {
+const CartItem = ({ item, type }) => {
   return (
     <div className={styles.cartItem}>
       <div className={styles.imageContainer}>
@@ -23,8 +23,10 @@ const CartItem = ({ item, isWishlist }) => {
           <div className={styles.productDescription}>{item.description}</div>
         </div>
         <div className={styles.actionsContainer}>
-          {isWishlist ? <RemoveFromWishlist product={item} /> : null}
-          <AddToCartComponent product={item} showCount={true} />
+          {type === 'wishlist' ? <RemoveFromWishlist product={item} /> : null}
+          {type === 'wishlist' || type === 'orders' ? (
+            <AddToCartComponent product={item} showCount={true} />
+          ) : null}
         </div>
       </div>
     </div>
@@ -45,7 +47,7 @@ CartItem.propTypes = {
     }).isRequired,
     count: PropTypes.number.isRequired,
   }).isRequired,
-  isWishlist: PropTypes.bool,
+  type: PropTypes.string.isRequired,
 };
 
 export default CartItem;

@@ -17,6 +17,7 @@ const WishlistPage = () => {
       isWishlist={true}
       title={WISHLIST}
       totalItems={wishlistArray.length}
+      type="wishlist"
     />
   );
 };
