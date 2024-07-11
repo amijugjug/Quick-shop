@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import styles from './ProductCart.module.css';
-import Image from '../atoms/Image';
 import { useUser } from '../../context/User.context';
 import AddToCartComponent from '../AddToCartComponent';
 import { AddToWishlist, RemoveFromWishlist } from '../AddToWishlist';
+import Image from '../atoms/Image';
 
 const ProductCard = ({ product }) => {
   const { user } = useUser();

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 
 import styles from './CartItem.module.css'; // Import the CSS Module
-import Image from '../atoms/Image';
 import AddToCartComponent from '../AddToCartComponent';
 import { RemoveFromWishlist } from '../AddToWishlist';
+import Image from '../atoms/Image';
 
 const CartItem = ({ item, type }) => {
   return (

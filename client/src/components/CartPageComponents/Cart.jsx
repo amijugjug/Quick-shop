@@ -1,3 +1,4 @@
+import { loadStripe } from '@stripe/stripe-js';
 import PropTypes from 'prop-types';
 
 import styles from './Cart.module.css'; // Import the CSS Module
@@ -5,7 +6,6 @@ import CartItem from './CartItem';
 import { useToast } from '../../context/Toast.context';
 import { useUser } from '../../context/User.context';
 import { verifySession } from '../../services/auth.service';
-import { loadStripe } from '@stripe/stripe-js';
 
 const CartHeader = ({ title, totalItems }) => {
   return (
