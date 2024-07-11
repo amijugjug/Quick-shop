@@ -3,15 +3,13 @@ import {
   setCookie,
   getCookie,
 } from './helpers/storageHelpers/cookie.helper';
-import { registerUser } from '../api/registerUser.api';
-
-// import { decodeToken } from 'react-jwt';
-
-import { USERS_DB } from '../constants';
 import {
   getLocalStorageItem,
   setLocalStorageItem,
 } from './helpers/storageHelpers/localstorage.helper';
+import { registerUser } from '../api/registerUser.api';
+import { USERS_DB } from '../constants';
+// import { decodeToken } from 'react-jwt';
 
 export const login = async (formData, navigateTo, pathToNavigate) => {
   try {

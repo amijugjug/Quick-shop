@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import styles from './CategoryItems.module.css'; // Import the CSS Module
 
 const CategoryItems = ({ categories, currentCategory, type }) => {

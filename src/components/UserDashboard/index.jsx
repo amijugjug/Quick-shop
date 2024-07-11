@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+
+import styles from './UserDashboard.module.css'; // Import the CSS file
 import { useUser } from '../../context/User.context';
 import Cart from '../CartPageComponents/Cart';
-import PropTypes from 'prop-types';
-import styles from './UserDashboard.module.css'; // Import the CSS file
 
 const UserDashboard = () => {
   const { user } = useUser();

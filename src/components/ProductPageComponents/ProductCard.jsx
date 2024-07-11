@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Image from '../../components/atoms/Image';
+
 import styles from './ProductCart.module.css';
+import Image from '../../components/atoms/Image';
 import AddToCartComponent from '../AddToCartComponent';
 import { AddToWishlist } from '../AddToWishlist';
-import PropTypes from 'prop-types';
 
 const ProductCard = ({ product }) => {
   return (

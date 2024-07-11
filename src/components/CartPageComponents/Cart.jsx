@@ -1,9 +1,10 @@
-import CartItem from './CartItem';
 import PropTypes from 'prop-types';
-import { verifySession } from '../../services/auth.service';
+
+import styles from './Cart.module.css'; // Import the CSS Module
+import CartItem from './CartItem';
 import { useToast } from '../../context/Toast.context';
 import { useUser } from '../../context/User.context';
-import styles from './Cart.module.css'; // Import the CSS Module
+import { verifySession } from '../../services/auth.service';
 
 const CartHeader = ({ title, totalItems }) => {
   return (

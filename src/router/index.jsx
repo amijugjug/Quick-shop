@@ -1,16 +1,17 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import Login from '../components/Auth/Login';
+import Register from '../components/Auth/Register';
+import ErrorBoundary from '../components/ErrorBoundary';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import CheckoutPage from '../pages/CheckoutPage';
 import HomePage from '../pages/HomePage';
+import NotFoundPage from '../pages/NotFound';
+import ProductDetailPage from '../pages/ProductDetailPage';
 import ProductPage from '../pages/ProductPage';
 import ProfilePage from '../pages/ProfilePage';
 import WishlistPage from '../pages/WishlistPage';
-import CheckoutPage from '../pages/CheckoutPage';
-import Login from '../components/Auth/Login';
-import Register from '../components/Auth/Register';
-import ProductDetailPage from '../pages/ProductDetailPage';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import NotFoundPage from '../pages/NotFound';
-import ErrorBoundary from '../components/ErrorBoundary';
 
 const AppRouter = () => {
   return (

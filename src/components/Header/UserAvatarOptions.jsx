@@ -1,10 +1,11 @@
-import Dropdown from '../atoms/Dropdown';
 
-import UserAvatar from '../../static/assets/user-avatar.svg';
-import { logout, verifySession } from '../../services/auth.service';
 import { useNavigate } from 'react-router-dom';
-import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
+
 import { useToast } from '../../context/Toast.context';
+import { logout, verifySession } from '../../services/auth.service';
+import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
+import UserAvatar from '../../static/assets/user-avatar.svg';
+import Dropdown from '../atoms/Dropdown';
 
 const UserAvatarOptions = () => {
   const navigate = useNavigate();

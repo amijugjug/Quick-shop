@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import Portal from '../Portal';
-import Modal from '../Modal';
-import Input from '../Input';
-import Button from '../atoms/Button';
+import { useNavigate } from 'react-router-dom';
 
 import { INPUT_TYPE, LOGIN_MODAL_TEXT } from '../../constants';
-// import { useModal } from '../../context/Modal.context';
 import { login } from '../../services/auth.service';
-import { useNavigate } from 'react-router-dom';
+import Button from '../atoms/Button';
+import Input from '../Input';
+import Modal from '../Modal';
+import Portal from '../Portal';
+// import { useModal } from '../../context/Modal.context';
+
 
 const LoginComponent = () => {
   const [state, setState] = useState({

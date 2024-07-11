@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import Cart from '../../components/CartPageComponents/Cart';
 import { CART } from '../../constants';
 import { useUser } from '../../context/User.context';

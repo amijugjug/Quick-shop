@@ -1,10 +1,12 @@
+import PropTypes from 'prop-types';
+import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
+
+import styles from './ProductDetails.module.css'; // Import the CSS Module
 import Image from '../../components/atoms/Image';
 import AddToCartComponent from '../AddToCartComponent';
 import { AddToWishlist } from '../AddToWishlist';
-import PropTypes from 'prop-types';
-import Rating from 'react-rating';
-import styles from './ProductDetails.module.css'; // Import the CSS Module
+
 
 const ProductPage = ({ product }) => {
   return (

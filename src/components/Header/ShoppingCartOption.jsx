@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
+import ShoppingCart from '../../static/assets/shoping-cart.svg';
 import Image from '../atoms/Image';
 
-import ShoppingCart from '../../static/assets/shoping-cart.svg';
 
 const ShoppingCartOption = () => {
   return (

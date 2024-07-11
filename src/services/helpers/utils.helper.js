@@ -1,5 +1,5 @@
-import { USERS_DB } from '../../constants';
 import { getLocalStorageItem } from './storageHelpers/localstorage.helper';
+import { USERS_DB } from '../../constants';
 
 export const isValidEmail = (email) => {
   // Regular expression for basic email validation

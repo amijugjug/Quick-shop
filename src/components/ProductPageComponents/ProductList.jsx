@@ -1,5 +1,6 @@
-import ProductCard from './ProductCard';
 import PropTypes from 'prop-types';
+
+import ProductCard from './ProductCard';
 import styles from './ProductList.module.css'; // Import the CSS Module
 
 export default function ProductList({ productList }) {

@@ -1,5 +1,6 @@
-import { createContext, useContext, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-empty-function */
 import PropTypes from 'prop-types';
+import { createContext, useContext, useState } from 'react';
 
 const ModalContext = createContext({ modal: false, toggleModal: () => {} });
 

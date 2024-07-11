@@ -1,7 +1,8 @@
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+
 import Categories from '../../components/ProductPageComponents/Categories';
 import ProductList from '../../components/ProductPageComponents/ProductList';
-import { useEffect, useState } from 'react';
 import { fetchCategories, fetchProducts } from '../../services/product.service';
 
 const ProductsPage = () => {

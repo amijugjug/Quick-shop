@@ -1,7 +1,10 @@
-import s from './Modal.module.css';
+/* eslint-disable @typescript-eslint/no-empty-function */
 import PropTypes from 'prop-types';
-import Label from '../atoms/Label';
 import { Link } from 'react-router-dom';
+
+import s from './Modal.module.css';
+import Label from '../atoms/Label';
+
 
 const FooterText = ({
   statement,

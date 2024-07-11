@@ -1,8 +1,10 @@
+import PropTypes from 'prop-types';
+
+import styles from './CartItem.module.css'; // Import the CSS Module
+import Image from '../../components/atoms/Image';
 import AddToCartComponent from '../AddToCartComponent';
 import { RemoveFromWishlist } from '../AddToWishlist';
-import Image from '../../components/atoms/Image';
-import PropTypes from 'prop-types';
-import styles from './CartItem.module.css'; // Import the CSS Module
+
 
 const CartItem = ({ item, isWishlist }) => {
   return (

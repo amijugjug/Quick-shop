@@ -1,13 +1,13 @@
-import Image from '../../components/atoms/Image';
-import { useNavigate } from 'react-router-dom';
-import Button from '../../components/atoms/Button';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-import ContemplativeAthleisure from '../../static/assets/Contemplative Athleisure.jpg';
-import VibrantAthleticWearCollection from '../../static/assets/Vibrant Athletic Wear Collection.jpg';
-import ContemplativeFashionPortrait from '../../static/assets/Contemplative Fashion Portrait.jpg';
 import styles from './HomePage.module.css';
+import Button from '../../components/atoms/Button';
+import Image from '../../components/atoms/Image';
 import { isUserLoggedIn } from '../../services/auth.service';
+import ContemplativeAthleisure from '../../static/assets/Contemplative Athleisure.jpg';
+import ContemplativeFashionPortrait from '../../static/assets/Contemplative Fashion Portrait.jpg';
+import VibrantAthleticWearCollection from '../../static/assets/Vibrant Athletic Wear Collection.jpg';
 
 function HeroSection({ navigate }) {
   const handleNavigation = () => {

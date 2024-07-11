@@ -1,9 +1,11 @@
-import { useState } from 'react';
-import s from './Dropdown.module.css';
-import Image from '../Image';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import s from './Dropdown.module.css';
 import { isUserLoggedIn } from '../../../services/auth.service';
+import Image from '../Image';
+
 
 const Dropdown = ({
   options,

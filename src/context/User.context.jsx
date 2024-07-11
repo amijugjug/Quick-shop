@@ -1,12 +1,14 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-empty-function */
 import PropTypes, { bool } from 'prop-types';
+import { createContext, useContext, useEffect, useState } from 'react';
+
+import { USERS_DB } from '../constants';
+import { getUserFromLS } from '../services/auth.service';
+import { getCookie } from '../services/helpers/storageHelpers/cookie.helper';
 import {
   getLocalStorageItem,
   setLocalStorageItem,
 } from '../services/helpers/storageHelpers/localstorage.helper';
-import { USERS_DB } from '../constants';
-import { getCookie } from '../services/helpers/storageHelpers/cookie.helper';
-import { getUserFromLS } from '../services/auth.service';
 
 const userSchema = {
   name: '',

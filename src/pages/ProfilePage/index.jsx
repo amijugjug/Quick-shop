@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import UserDashboard from '../../components/UserDashboard';
 import { useParams } from 'react-router-dom';
+
+import UserDashboard from '../../components/UserDashboard';
 import { checkValidUser } from '../../services/auth.service';
 
 const ProfilePage = () => {

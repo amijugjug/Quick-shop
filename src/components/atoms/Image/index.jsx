@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 
 const Image = ({ src, alt, width, height, placeholderSrc, ...props }) => {
   const [imgSrc, setImgSrc] = useState(src);

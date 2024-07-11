@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react';
-
 import { createPortal } from 'react-dom';
 
 import s from './Portal.module.css';

@@ -1,6 +1,7 @@
 // src/helpers/axiosWrapper.js
 
 import axios from 'axios';
+
 import { getCookie } from '../storageHelpers/cookie.helper';
 
 // Middlewares for Axios

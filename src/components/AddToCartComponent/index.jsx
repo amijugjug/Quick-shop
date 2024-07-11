@@ -1,11 +1,11 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
-import PropTypes from 'prop-types';
-import Button from '../atoms/Button';
+import styles from './AddToCart.module.css';
+import { useUser } from '../../context/User.context';
 import { getUserFromLS, verifySession } from '../../services/auth.service';
 import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
-import { useUser } from '../../context/User.context';
-import styles from './AddToCart.module.css';
+import Button from '../atoms/Button';
 
 const AddToCartComponent = ({ showCount, product }) => {
   const [count, setCount] = useState(0);

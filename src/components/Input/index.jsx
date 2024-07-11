@@ -1,9 +1,11 @@
-import { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-empty-function */
 import PropTypes from 'prop-types';
-import Image from '../atoms/Image';
+import { useState } from 'react';
+
 import s from './Input.module.css';
 import { INPUT_TYPE } from '../../constants';
 import EyeImage from '../../static/assets/EyeImg.svg';
+import Image from '../atoms/Image';
 import Label from '../atoms/Label';
 
 const Input = ({

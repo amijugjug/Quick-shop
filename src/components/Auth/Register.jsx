@@ -1,18 +1,19 @@
-import { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-empty-function */
 import PropTypes from 'prop-types';
-import Portal from '../Portal';
-import Modal from '../Modal';
-import Input from '../Input';
-import Button from '../atoms/Button';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { INPUT_TYPE, REGISTER_MODAL_TEXT } from '../../constants';
-import { useNavigate } from 'react-router-dom';
+import { useToast } from '../../context/Toast.context';
 import { register } from '../../services/auth.service';
 import {
   checkUsernameAlreadyExist,
   isValidEmail,
 } from '../../services/helpers/utils.helper';
-import { useToast } from '../../context/Toast.context';
+import Button from '../atoms/Button';
+import Input from '../Input';
+import Modal from '../Modal';
+import Portal from '../Portal';
 
 const RegisterComponent = ({ onRegister = () => {} }) => {
   const [state, setState] = useState({

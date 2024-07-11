@@ -1,7 +1,8 @@
-import s from './Navbar.module.css';
-import UserAvatarOptions from '../Header/UserAvatarOptions';
 import { Link } from 'react-router-dom';
+
+import s from './Navbar.module.css';
 import ShoppingCartOption from '../Header/ShoppingCartOption';
+import UserAvatarOptions from '../Header/UserAvatarOptions';
 import WishlistOption from '../Header/WishlistOption';
 
 const Navbar = () => {
@@ -9,7 +10,6 @@ const Navbar = () => {
     <header className={s.navbar}>
       <h1
         className={s.titleText}
-        onClick={() => {}}
         style={{ cursor: 'pointer', marginLeft: '1rem' }}
       >
         <Link to="/">QuickShop</Link>

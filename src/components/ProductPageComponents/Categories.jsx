@@ -1,8 +1,9 @@
-import PriceRangeComponent from '../atoms/PriceRangeComponent';
 import PropTypes from 'prop-types';
+
+import styles from './Categories.module.css'; // Import the CSS Module
 import CategoryItems from './CategoryItems';
 import { RATINGS } from '../../constants';
-import styles from './Categories.module.css'; // Import the CSS Module
+import PriceRangeComponent from '../atoms/PriceRangeComponent';
 
 const Categories = ({
   categories,

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
+import Wishlist from '../../static/assets/wishlist-icon.svg';
 import Image from '../atoms/Image';
 
-import Wishlist from '../../static/assets/wishlist-icon.svg';
 
 const WishlistOption = () => {
   return (

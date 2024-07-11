@@ -1,10 +1,10 @@
+import MobileWarning from './components/MobileWarning';
 import { ModalProvider } from './context/Modal.context';
 import { ToastProvider } from './context/Toast.context';
 import { UserProvider } from './context/User.context';
 import useDetectDevice from './hooks/useDetectDevice.hook';
 import AppRouter from './router';
 
-import MobileWarning from './components/MobileWarning';
 function App() {
   const deviceType = useDetectDevice();
   const isMobile = deviceType === 'mobile';

@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import s from './Avatar.module.css';
-import ProfilePic from '@/../public/static/ProfilePic.svg';
-import Image from '../Image';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+
+import s from './Avatar.module.css';
+import Image from '../Image';
+import ProfilePic from '@/../public/static/ProfilePic.svg';
 
 const Avatar = ({ imageUrl = '', alt = '' }) => {
   const [imageError, setImageError] = useState(false);

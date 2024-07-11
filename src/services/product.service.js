@@ -1,6 +1,6 @@
 import { verifySession } from './auth.service';
-import { getProducts } from '../api/getProducts.api';
 import { getCategories } from '../api/getCategories.api';
+import { getProducts } from '../api/getProducts.api';
 import { getSingleProduct } from '../api/getSingleProduct';
 
 export const fetchSingleProduct = async (id) => {

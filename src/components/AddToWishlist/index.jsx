@@ -1,10 +1,11 @@
-import Image from '../atoms/Image';
 import PropTypes from 'prop-types';
-import WishlistIcon from '../../static/assets/wishlist-icon.svg';
-import { verifySession } from '../../services/auth.service';
-import { useUser } from '../../context/User.context';
-import { useToast } from '../../context/Toast.context';
+
 import styles from './AddToWishlist.module.css';
+import { useToast } from '../../context/Toast.context';
+import { useUser } from '../../context/User.context';
+import { verifySession } from '../../services/auth.service';
+import WishlistIcon from '../../static/assets/wishlist-icon.svg';
+import Image from '../atoms/Image';
 
 export const AddToWishlist = ({ showImage = false, product }) => {
   const { notify } = useToast();
