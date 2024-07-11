@@ -5,16 +5,16 @@ import { useUser } from '../../context/User.context';
 
 const CheckoutPage = () => {
   const { user } = useUser();
-  const [cartArray, setCartArray] = useState(Object.values(user.cart));
+  const [cartArray, setCartArray] = useState([]);
   useEffect(() => {
-    setCartArray(Object.values(user.cart));
-  }, [user.cart]);
+    if (user?.cart) setCartArray(Object.values(user?.cart));
+  }, [user?.cart]);
 
   return (
     <Cart
       items={cartArray}
       title={CART}
-      totalItems={user.totalCartItemCount}
+      totalItems={user?.totalCartItemCount ?? 0}
       isWishlist={false}
     />
   );

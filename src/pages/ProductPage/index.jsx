@@ -14,7 +14,7 @@ const ProductsPage = () => {
   useEffect(() => {
     const query = queryParams.get('query') || '';
     const category = queryParams.get('category') || '';
-    if (category || productList.length === 0) {
+    if (category || productList?.length === 0) {
       (async () => {
         try {
           const [products, categories] = await Promise.all([

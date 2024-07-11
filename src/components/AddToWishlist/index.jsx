@@ -74,7 +74,7 @@ AddToWishlist.propTypes = {
       rate: PropTypes.number.isRequired,
       count: PropTypes.number.isRequired,
     }).isRequired,
-    count: PropTypes.number.isRequired,
+    count: PropTypes.number,
   }).isRequired,
 };
 
@@ -128,6 +128,6 @@ RemoveFromWishlist.propTypes = {
       rate: PropTypes.number.isRequired,
       count: PropTypes.number.isRequired,
     }).isRequired,
-    count: PropTypes.number.isRequired,
+    count: PropTypes.number,
   }).isRequired,
 };

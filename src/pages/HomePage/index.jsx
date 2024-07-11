@@ -6,13 +6,17 @@ import PropTypes from 'prop-types';
 import ContemplativeAthleisure from '../../static/assets/Contemplative Athleisure.jpg';
 import VibrantAthleticWearCollection from '../../static/assets/Vibrant Athletic Wear Collection.jpg';
 import ContemplativeFashionPortrait from '../../static/assets/Contemplative Fashion Portrait.jpg';
-import { useEffect } from 'react';
-import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
-import { getUserFromLS } from '../../services/auth.service';
-import { useUser } from '../../context/User.context';
 import styles from './HomePage.module.css';
+import { isUserLoggedIn } from '../../services/auth.service';
 
 function HeroSection({ navigate }) {
+  const handleNavigation = () => {
+    if (isUserLoggedIn()) {
+      navigate('/products');
+    } else {
+      navigate('/login');
+    }
+  };
   return (
     <section
       style={{
@@ -95,9 +99,9 @@ function HeroSection({ navigate }) {
             Shop as you picking it from your wardrobe
           </h2>
           <Button
-            onClick={() => navigate('/products')}
+            onClick={handleNavigation}
             text="Check Products"
-            size="small"
+            size="medium"
           />
         </div>
       </article>
@@ -363,18 +367,6 @@ function GridSection({ navigate }) {
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const { setUser } = useUser();
-
-  useEffect(() => {
-    if (getCookie('token')) {
-      const decryptedUserName = getCookie('token');
-      const user = getUserFromLS(decryptedUserName);
-      if (user) {
-        setUser(user);
-      }
-    }
-  }, []);
-
   return (
     <>
       <HeroSection navigate={navigate} />

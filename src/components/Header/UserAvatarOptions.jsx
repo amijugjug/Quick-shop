@@ -22,7 +22,6 @@ const UserAvatarOptions = () => {
     { label: 'Dashboard', value: 'Dashboard' },
     { label: 'Logout', value: 'Logout' },
   ];
-
   return (
     <Dropdown
       options={options}

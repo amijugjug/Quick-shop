@@ -5,12 +5,10 @@ import { useUser } from '../../context/User.context';
 
 const WishlistPage = () => {
   const { user } = useUser();
-  const [wishlistArray, setWishListArray] = useState(
-    Object.values(user?.wishlist)
-  );
+  const [wishlistArray, setWishListArray] = useState([]);
   useEffect(() => {
-    setWishListArray(Object.values(user.wishlist));
-  }, [user.wishlist]);
+    if (user?.wishlist) setWishListArray(Object.values(user?.wishlist));
+  }, [user?.wishlist]);
 
   return (
     <Cart

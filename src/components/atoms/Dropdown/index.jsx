@@ -2,6 +2,8 @@ import { useState } from 'react';
 import s from './Dropdown.module.css';
 import Image from '../Image';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import { isUserLoggedIn } from '../../../services/auth.service';
 
 const Dropdown = ({
   options,
@@ -10,12 +12,17 @@ const Dropdown = ({
   placeholderImage,
   onDropDownClick,
 }) => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
   const toggleDropdown = () => {
-    onDropDownClick();
-    setIsOpen(!isOpen);
+    if (isUserLoggedIn()) {
+      onDropDownClick();
+      setIsOpen(!isOpen);
+    } else {
+      navigate('/login');
+    }
   };
 
   const handleOptionClick = (option) => {

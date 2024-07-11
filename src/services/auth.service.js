@@ -45,7 +45,8 @@ export const login = async (formData, navigateTo, pathToNavigate) => {
 
 export const logout = async (navigateTo) => {
   deleteCookie('token');
-  navigateTo('/login');
+  deleteCookie('id');
+  navigateTo('/');
 };
 
 export const register = async (formData, navigate, pathToNavigate) => {
@@ -131,4 +132,9 @@ export const checkValidUser = (username) => {
   const currentLoggedInUser = getCookie('token');
   if (currentLoggedInUser === decryptedUserName) return user;
   return null;
+};
+
+export const isUserLoggedIn = () => {
+  const token = getCookie('token');
+  return !!token;
 };

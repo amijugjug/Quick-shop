@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import PropTypes, { bool } from 'prop-types';
 import {
   getLocalStorageItem,
@@ -34,7 +34,18 @@ const UserContext = createContext({
 });
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(userSchema);
+  const [user, setUser] = useState({});
+
+  const updateUserStateFromStorage = () => {
+    const decryptedUserName = getCookie('token');
+    if (decryptedUserName && JSON.parse(getLocalStorageItem(USERS_DB))) {
+      const db = JSON.parse(getLocalStorageItem(USERS_DB));
+      const user = getUserFromLS(decryptedUserName);
+      if (user && db[user.token]) {
+        setUser(db[user.token]);
+      }
+    }
+  };
 
   const calculateTotalItemsInCart = (cart) => {
     const cartItems = Object.values(cart);
@@ -134,23 +145,16 @@ export const UserProvider = ({ children }) => {
       if (db) {
         db[user.token] = user;
         setLocalStorageItem(USERS_DB, JSON.stringify(db));
-        updateUserFromStorage();
+        updateUserStateFromStorage();
         return true;
       }
     }
     return false;
   };
 
-  const updateUserFromStorage = () => {
-    const decryptedUserName = getCookie('token');
-    if (decryptedUserName) {
-      const db = JSON.parse(getLocalStorageItem(USERS_DB));
-      const user = getUserFromLS(decryptedUserName);
-      if (user && db[user.token]) {
-        setUser(db[user.token]);
-      }
-    }
-  };
+  useEffect(() => {
+    updateUserStateFromStorage();
+  }, []);
 
   return (
     <UserContext.Provider

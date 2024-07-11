@@ -5,12 +5,11 @@ import PropTypes from 'prop-types';
 
 const UserDashboard = () => {
   const { user } = useUser();
-  const [previousOrders, setPreviousOrders] = useState(
-    Object.values(user.previousorders)
-  );
+  const [previousOrders, setPreviousOrders] = useState([]);
   useEffect(() => {
-    setPreviousOrders(Object.values(user.previousorders));
-  }, [user.previousorders]);
+    if (user?.previousorders)
+      setPreviousOrders(Object.values(user?.previousorders));
+  }, [user?.previousorders]);
   const styles = {
     dashboardContainer: {
       margin: '20px',
@@ -40,19 +39,19 @@ const UserDashboard = () => {
       <div style={styles.userInfo}>
         <h2 style={styles.heading}>User Dashboard</h2>
         <p>
-          <strong>Name:</strong> {user.name}
+          <strong>Name:</strong> {user?.name}
         </p>
         <p>
-          <strong>Email:</strong> {user.email}
+          <strong>Email:</strong> {user?.email}
         </p>
         <p>
-          <strong>Username:</strong> {user.username}
+          <strong>Username:</strong> {user?.username}
         </p>
       </div>
       <div style={styles.ordersList}>
         <Cart
           title={'Your Previous Orders'}
-          totalItems={0}
+          totalItems={previousOrders.length}
           type="previousOrders"
           items={previousOrders}
         />

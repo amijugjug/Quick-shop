@@ -70,7 +70,7 @@ const Cart = ({
 
   return (
     <>
-      <CartHeader title={title} totalItems={totalItems} />
+      <CartHeader title={title} totalItems={totalItems ?? 0} />
       <div style={styles.cart}>
         {totalItems === 0 ? (
           <h2 style={{ alignSelf: 'center' }}> No items to preview</h2>
