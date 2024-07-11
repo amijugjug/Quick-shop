@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const PriceRangeComponent = ({ min, max, onChange }) => {
-  const [value, setValue] = useState([min, max]);
+  const [value, setValue] = useState(max);
 
   const handleChange = (event) => {
     const newValue = [parseInt(event.target.value)];
