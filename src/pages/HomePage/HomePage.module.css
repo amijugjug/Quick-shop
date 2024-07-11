@@ -1,33 +1,20 @@
-.heroContainerSection {
+/* HomePage.module.css */
+
+.heroSection {
   display: block;
   overflow-x: hidden;
 }
 
-.gridContainerSection {
-  padding: 1rem;
-  flex: 1 1 auto;
-  justify-content: center;
-  align-items: center;
-}
-
-.heroContainerArticle {
+.heroArticle {
   display: flex;
-  position: relative;
-  flex-direction: row;
   width: auto;
   max-width: 100%;
-  height: auto;
+  height: 500px;
   max-height: 100%;
+  position: relative;
 }
 
-.heroContainerArticle > img {
-  object-fit: cover;
-  max-width: 100%;
-  height: auto;
-  max-height: 100%;
-}
-
-.textContainer {
+.heroContent {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -38,8 +25,8 @@
   position: absolute;
 }
 
-.heroText {
-  font-size: 1.875rem;
+.heroTitle {
+  font-size: 8rem;
   line-height: 2.25rem;
   font-weight: 900;
   color: white;
@@ -48,64 +35,156 @@
   text-shadow: 2px 2px #ff0000;
 }
 
-.textContainer > h2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  font-size: 1rem;
+.heroSubtitle {
+  padding: 0.5rem 2rem;
+  border-radius: 0.125rem;
+  font-size: 2rem;
   line-height: 1.5rem;
   font-weight: 700;
-  color: rgb(248, 250, 252);
+  color: white;
 }
 
-.link {
+.gridSection {
+  padding: 1rem;
+  flex: 1 1 auto;
+  display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 500;
-  white-space: nowrap;
-  transition-property: color, background-color, border-color,
-    text-decoration-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
 }
 
-@media (minwidth: 768px) {
-  .heroContainerSection {
-    height: 45hv;
-  }
-
-  .heroText {
-    font-size: 4.5rem;
-    line-height: 1;
-  }
+.gridContainer {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  margin: 20px;
 }
 
-@media (minwidth: 1024px) {
-  .heroContainerSection {
-    height: 55hv;
-  }
-
-  .heroText {
-    font-size: 72px;
-    line-height: 1;
-  }
-
-  .textContainer > h2 {
-    padding-left: 6rem;
-    padding-right: 6rem;
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
+.leftSide {
+  display: flex;
+  overflow: hidden;
+  flex-direction: row;
+  gap: 1rem;
+  align-content: space-between;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  border-width: 2px;
+  width: 50%;
 }
 
-@media (minwidth: 1280px) {
-  .heroContainerSection {
-    height: 70hv;
-  }
+.leftImage {
+  width: 250px;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.leftImageSmall {
+  width: 13rem;
+}
+
+.leftContent {
+  padding: 1rem;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.leftContentTitle {
+  font-weight: 700;
+}
+
+.leftContentSubtitle {
+  font-weight: 600;
+}
+
+.leftContentText {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 50%;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.box1 {
+  background: pink;
+  padding: 40px 0 0 40px;
+}
+
+.box1Title {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+}
+
+.box1Subtitle {
+  font-weight: 700;
+  font-size: 34px;
+  color: #000000;
+  margin: 0;
+}
+
+.box2 {
+  border-radius: 0.5rem;
+  width: 50%;
+  position: relative;
+}
+
+.box2Image {
+  border-radius: 0.5rem;
+  object-fit: cover;
+  width: 100%;
+}
+
+.box2Overlay {
+  position: absolute;
+  top: 0;
+}
+
+.box2OverlayTitle {
+  display: inline-flex;
+  padding: 0.25rem 1rem;
+  margin: 4rem 0 0 1rem;
+  border-radius: 0.25rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.box2OverlaySubtitle {
+  margin: 0 0 0 1rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.box3 {
+  border-radius: 0.5rem;
+  width: 100%;
+  min-height: min-content;
+}
+
+.box3Image {
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.5rem;
+  width: 100%;
 }
 
 .area {

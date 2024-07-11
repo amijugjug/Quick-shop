@@ -5,6 +5,7 @@
   line-height: 1rem;
   font-weight: 500;
   text-transform: capitalize;
-  background: #dac0a3;
   cursor: pointer;
+  background-color: #d9534f;
+  color: #fff;
 }

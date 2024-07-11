@@ -65,14 +65,7 @@ export const RemoveFromWishlist = ({ product }) => {
   };
   return (
     <>
-      <span
-        style={{
-          backgroundColor: '#d9534f',
-          color: '#fff',
-        }}
-        className={styles.category}
-        onClick={removeItem}
-      >
+      <span className={styles.category} onClick={removeItem}>
         Remove Item
       </span>
     </>
