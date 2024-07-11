@@ -2,10 +2,13 @@ import { Link } from 'react-router-dom';
 import Image from '../../components/atoms/Image';
 import styles from './ProductCart.module.css';
 import AddToCartComponent from '../AddToCartComponent';
-import { AddToWishlist } from '../AddToWishlist';
+import { AddToWishlist, RemoveFromWishlist } from '../AddToWishlist';
 import PropTypes from 'prop-types';
+import { useUser } from '../../context/User.context';
 
 const ProductCard = ({ product }) => {
+  const { user } = useUser();
+  const isItemInWishlist = user?.wishlist[product?.id];
   return (
     <article className={styles.article}>
       <Link to={`/products/${product.id}`} className={styles.link}>
@@ -38,7 +41,11 @@ const ProductCard = ({ product }) => {
         <div className={styles.bottomSection}>
           <div className={styles.categoryContainer}>
             <span className={styles.category}>{product.category}</span>
-            <AddToWishlist product={product} />
+            {isItemInWishlist ? (
+              <RemoveFromWishlist product={product} />
+            ) : (
+              <AddToWishlist product={product} />
+            )}
           </div>
           <div className={styles.priceContainer}>
             <p className={styles.price}>${product.price}</p>

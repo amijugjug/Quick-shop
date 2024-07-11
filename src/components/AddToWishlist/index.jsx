@@ -66,7 +66,7 @@ export const RemoveFromWishlist = ({ product }) => {
   return (
     <>
       <span className={styles.category} onClick={removeItem}>
-        Remove Item
+        Remove From Wishlist
       </span>
     </>
   );
