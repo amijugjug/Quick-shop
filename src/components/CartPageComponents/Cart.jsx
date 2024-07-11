@@ -61,14 +61,7 @@ const Cart = ({
 
   const onCheckoutClick = () => {
     if (totalItems > 5) {
-      notify('error', 'Can not proceed with more than 5 items', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      notify('error', 'Can not proceed with more than 5 items');
     } else {
       updatePreviousOrders(items);
     }

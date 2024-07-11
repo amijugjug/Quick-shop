@@ -23,14 +23,7 @@ export const AddToWishlist = ({ showImage = false, product }) => {
   const addItemClick = () => {
     verifySession();
     if (addItemInWishlist(product)) {
-      notify('success', 'Item added to wishlist', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      notify('success', 'Item added to wishlist');
     }
   };
 
@@ -78,14 +71,7 @@ export const RemoveFromWishlist = ({ product }) => {
     verifySession();
 
     if (removeItemFromWishlist(product)) {
-      notify('success', 'Item removed from wishlist', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      notify('success', 'Item removed from wishlist');
     }
   };
   return (

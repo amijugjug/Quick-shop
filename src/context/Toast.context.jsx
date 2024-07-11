@@ -3,10 +3,19 @@ import PropTypes from 'prop-types';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const defaultToastOptions = {
+  position: 'top-right',
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+};
+
 const ToastContext = createContext();
 
 export const ToastProvider = ({ children }) => {
-  const notify = useCallback((type, message, options = {}) => {
+  const notify = useCallback((type, message, options = defaultToastOptions) => {
     switch (type) {
       case 'success':
         toast.success(message, options);

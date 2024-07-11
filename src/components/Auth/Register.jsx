@@ -6,10 +6,13 @@ import Input from '../Input';
 import Button from '../atoms/Button';
 
 import { INPUT_TYPE, REGISTER_MODAL_TEXT } from '../../constants';
-// import { useModal } from '../../context/Modal.context';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../../services/auth.service';
-import { isValidEmail } from '../../services/helpers/utils.helper';
+import {
+  checkUsernameAlreadyExist,
+  isValidEmail,
+} from '../../services/helpers/utils.helper';
+import { useToast } from '../../context/Toast.context';
 
 const RegisterComponent = ({ onRegister = () => {} }) => {
   const [state, setState] = useState({
@@ -21,14 +24,14 @@ const RegisterComponent = ({ onRegister = () => {} }) => {
   });
 
   const navigate = useNavigate();
+  const { notify } = useToast();
 
   const isButtonDisabled = () =>
     state.name === '' ||
     state.confirmPassword === '' ||
     state.password === '' ||
     state.username === '' ||
-    state.password !== state.confirmPassword ||
-    (state.email !== '' && !isValidEmail(state.email));
+    state.password !== state.confirmPassword;
 
   const handleNameInputChange = () => {
     const name = event.target.value;
@@ -56,6 +59,14 @@ const RegisterComponent = ({ onRegister = () => {} }) => {
   };
 
   const handleSubmit = () => {
+    if (state.email !== '' && !isValidEmail(state.email)) {
+      notify('error', 'Please enter the valid email.');
+      return;
+    }
+    if (checkUsernameAlreadyExist(state.username)) {
+      notify('error', 'Username already exists.');
+      return;
+    }
     const postObj = {
       name: state.name,
       email: state.email,
