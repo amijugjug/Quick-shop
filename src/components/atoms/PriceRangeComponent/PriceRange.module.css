@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  width: 100%;
+  min-width: 300px;
+  margin: auto;
+  align-items: center;
+  gap: 5px;
+}
+.priceRangeComponent {
+}

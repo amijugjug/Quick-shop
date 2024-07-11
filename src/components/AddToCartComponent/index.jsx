@@ -5,6 +5,7 @@ import Button from '../atoms/Button';
 import { getUserFromLS, verifySession } from '../../services/auth.service';
 import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
 import { useUser } from '../../context/User.context';
+import styles from './AddToCart.module.css';
 
 const AddToCartComponent = ({ showCount, product }) => {
   const [count, setCount] = useState(0);
@@ -32,7 +33,7 @@ const AddToCartComponent = ({ showCount, product }) => {
   }, []);
 
   return (
-    <div style={styles.buttonContainer}>
+    <div className={styles.buttonContainer}>
       <Button
         text="+"
         size="rounded"
@@ -40,17 +41,7 @@ const AddToCartComponent = ({ showCount, product }) => {
         onClick={addItem}
       />
       {showCount ? (
-        <p
-          style={{
-            textDecoration: 'none',
-            color: 'rgb(87, 83, 78)',
-            fontSize: '14px',
-            fontWeight: '400',
-            lineHeight: '16px',
-          }}
-        >
-          {count}
-        </p>
+        <p className={styles.count}>{count}</p>
       ) : (
         <Button text="Add to Cart" size="medium" backgroundColor="#DACOA3" />
       )}
@@ -83,12 +74,3 @@ AddToCartComponent.propTypes = {
 };
 
 export default AddToCartComponent;
-
-const styles = {
-  buttonContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '16px',
-  },
-};

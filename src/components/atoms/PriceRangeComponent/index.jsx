@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import styles from './PriceRange.module.css';
 
 const PriceRangeComponent = ({ min, max, onChange }) => {
   const [value, setValue] = useState(max);
@@ -10,21 +11,9 @@ const PriceRangeComponent = ({ min, max, onChange }) => {
     onChange(newValue);
   };
 
-  const styles = {
-    container: {
-      display: 'flex',
-      width: '100%',
-      minWidth: '300px',
-      margin: 'auto',
-      alignItems: 'center',
-      gap: '5px',
-    },
-    priceRangeComponent: {},
-  };
-
   return (
-    <div style={styles.priceRangeComponent}>
-      <div style={styles.container}>
+    <div className={styles.priceRangeComponent}>
+      <div className={styles.container}>
         <p>{min}</p>
         <input
           type="range"

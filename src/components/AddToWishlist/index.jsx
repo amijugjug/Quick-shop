@@ -4,19 +4,8 @@ import WishlistIcon from '../../static/assets/wishlist-icon.svg';
 import { verifySession } from '../../services/auth.service';
 import { useUser } from '../../context/User.context';
 import { useToast } from '../../context/Toast.context';
+import styles from './AddToWishlist.module.css';
 
-const styles = {
-  category: {
-    padding: '0.5rem',
-    borderRadius: '0.375rem',
-    fontSize: '0.75rem',
-    lineHeight: '1rem',
-    fontWeight: 500,
-    textTransform: 'capitalize',
-    background: '#DAC0A3',
-    cursor: 'pointer',
-  },
-};
 export const AddToWishlist = ({ showImage = false, product }) => {
   const { notify } = useToast();
   const { addItemInWishlist } = useUser();
@@ -39,7 +28,7 @@ export const AddToWishlist = ({ showImage = false, product }) => {
           style={{ alignSelf: 'center' }}
         />
       ) : (
-        <span style={styles.category} onClick={addItemClick}>
+        <span className={styles.category} onClick={addItemClick}>
           Add to wishlist
         </span>
       )}
@@ -78,10 +67,10 @@ export const RemoveFromWishlist = ({ product }) => {
     <>
       <span
         style={{
-          ...styles.category,
           backgroundColor: '#d9534f',
           color: '#fff',
         }}
+        className={styles.category}
         onClick={removeItem}
       >
         Remove Item
