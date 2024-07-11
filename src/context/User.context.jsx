@@ -153,6 +153,9 @@ export const UserProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    if (!getLocalStorageItem(USERS_DB)) {
+      setLocalStorageItem(USERS_DB, JSON.stringify({}));
+    }
     updateUserStateFromStorage();
   }, []);
 
