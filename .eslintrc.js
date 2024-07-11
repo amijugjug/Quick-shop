@@ -6,7 +6,6 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
-    'plugin:@typescript-eslint/recommended', // If using TypeScript
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript', // If using TypeScript
@@ -48,6 +47,5 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off', // Allow props spreading if needed
     'react/jsx-key': 'warn', // Warn about missing keys in lists
     '@typescript-eslint/explicit-module-boundary-types': 'off', // If using TypeScript and prefer less strict boundaries
-    '@typescript-eslint/no-explicit-any': 'warn', // Warn about usage of `any`
   },
 };
