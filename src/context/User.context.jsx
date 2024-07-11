@@ -164,8 +164,7 @@ export const UserProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         user,
-        setUser,
-        setUserToLocalStorage,
+        updateUserStateFromStorage,
         addItemInCart,
         removeItemFromCart,
         addItemInWishlist,
