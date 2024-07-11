@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import PropTypes, { bool } from 'prop-types';
 import { createContext, useContext, useEffect, useState } from 'react';
 

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,7 +13,7 @@ import Input from '../Input';
 import Modal from '../Modal';
 import Portal from '../Portal';
 
-const RegisterComponent = ({ onRegister = () => {} }) => {
+const RegisterComponent = () => {
   const [state, setState] = useState({
     name: '',
     email: '',
@@ -76,7 +74,6 @@ const RegisterComponent = ({ onRegister = () => {} }) => {
       confirmPassword: state.confirmPassword,
     };
     register(postObj, navigate, '/');
-    onRegister();
   };
 
   return (
@@ -129,10 +126,6 @@ const RegisterComponent = ({ onRegister = () => {} }) => {
       />
     </>
   );
-};
-
-RegisterComponent.propTypes = {
-  onRegister: PropTypes.func,
 };
 const Register = () => {
   // const { modal } = useModal();

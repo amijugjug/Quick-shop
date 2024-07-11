@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import PropTypes from 'prop-types';
 
 import s from './Label.module.css';
