@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import styles from './ProductCart.module.css';
-import Image from '../../components/atoms/Image';
+import Image from '../atoms/Image';
 import { useUser } from '../../context/User.context';
 import AddToCartComponent from '../AddToCartComponent';
 import { AddToWishlist, RemoveFromWishlist } from '../AddToWishlist';

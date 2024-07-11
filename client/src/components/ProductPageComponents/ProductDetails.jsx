@@ -3,7 +3,7 @@ import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 
 import styles from './ProductDetails.module.css'; // Import the CSS Module
-import Image from '../../components/atoms/Image';
+import Image from '../atoms/Image';
 import AddToCartComponent from '../AddToCartComponent';
 import { AddToWishlist } from '../AddToWishlist';
 

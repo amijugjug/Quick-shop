@@ -5,6 +5,7 @@ import CartItem from './CartItem';
 import { useToast } from '../../context/Toast.context';
 import { useUser } from '../../context/User.context';
 import { verifySession } from '../../services/auth.service';
+import { loadStripe } from '@stripe/stripe-js';
 
 const CartHeader = ({ title, totalItems }) => {
   return (
@@ -34,11 +35,43 @@ const Cart = ({ title, items, totalItems, type }) => {
     clearWishlist();
   };
 
+  // payment integration
+  const makePayment = async () => {
+    const stripe = await loadStripe(process.env.PUBLISHABLE_KEY);
+
+    const body = {
+      products: items,
+    };
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+    const response = await fetch(
+      'http://localhost:7000/api/create-checkout-session',
+      {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(body),
+      }
+    );
+
+    const session = await response.json();
+
+    const result = stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+    updatePreviousOrders(items);
+
+    if (result.error) {
+      console.log(result.error);
+    }
+  };
+
   const onCheckoutClick = () => {
     if (totalItems > 5) {
       notify('error', 'Cannot proceed with more than 5 items');
     } else {
-      updatePreviousOrders(items);
+      // updatePreviousOrders(items);
+      makePayment();
     }
   };
 

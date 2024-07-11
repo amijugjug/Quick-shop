@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 import styles from './CartItem.module.css'; // Import the CSS Module
-import Image from '../../components/atoms/Image';
+import Image from '../atoms/Image';
 import AddToCartComponent from '../AddToCartComponent';
 import { RemoveFromWishlist } from '../AddToWishlist';
 
