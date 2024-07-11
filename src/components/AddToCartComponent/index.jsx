@@ -4,60 +4,22 @@ import PropTypes from 'prop-types';
 import Button from '../atoms/Button';
 import { getUserFromLS, verifySession } from '../../services/auth.service';
 import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
-import {
-  getLocalStorageItem,
-  setLocalStorageItem,
-} from '../../services/helpers/storageHelpers/localstorage.helper';
-import { USERS_DB } from '../../constants';
+import { useUser } from '../../context/User.context';
 
 const AddToCartComponent = ({ showCount, product }) => {
   const [count, setCount] = useState(0);
+  const { addItemInCart, removeItemFromCart } = useUser();
 
-  const addItemToCart = () => {
+  const addItem = () => {
     verifySession();
-    const decryptedUserName = getCookie('token');
-    const db = JSON.parse(getLocalStorageItem(USERS_DB));
-    const user = getUserFromLS(decryptedUserName);
-    const token = user.token;
-    if (user) {
-      if (Object.prototype.hasOwnProperty.call(user.cart, product.id)) {
-        user.cart[product.id].count++;
-      } else {
-        user.cart[product.id] = product;
-        user.cart[product.id].count = 1;
-      }
-      user.totalCartItemCount = Object.keys(user.cart).length;
-      setCount(user.cart[product.id].count);
-
-      console.log('user: ' + JSON.stringify(user, null, '\t'));
-      db[token] = user;
-      setLocalStorageItem(USERS_DB, JSON.stringify(db));
-      console.log('Added product to cart');
-    }
+    const currentItemCount = addItemInCart(product);
+    setCount(currentItemCount);
   };
 
-  const removeItemFromCart = () => {
+  const removeItem = () => {
     verifySession();
-    const decryptedUserName = getCookie('token');
-    const db = JSON.parse(getLocalStorageItem(USERS_DB));
-    const user = getUserFromLS(decryptedUserName);
-    const token = user.token;
-    if (user) {
-      if (Object.prototype.hasOwnProperty.call(user.cart, product.id)) {
-        user.cart[product.id].count--;
-        console.log('Removing product from cart', user.cart[product.id]?.count);
-        if (user.cart[product.id]?.count === 0) {
-          delete user.cart[product.id];
-        }
-      }
-      user.totalCartItemCount--;
-      setCount(user.cart[product.id]?.count ?? 0);
-
-      console.log('user: ' + JSON.stringify(user, null, '\t'));
-      db[token] = user;
-      setLocalStorageItem(USERS_DB, JSON.stringify(db));
-      console.log('Added product to cart');
-    }
+    const currentItemCount = removeItemFromCart(product);
+    setCount(currentItemCount);
   };
 
   useEffect(() => {
@@ -75,7 +37,7 @@ const AddToCartComponent = ({ showCount, product }) => {
         text="+"
         size="rounded"
         backgroundColor="#DACOA3"
-        onClick={addItemToCart}
+        onClick={addItem}
       />
       {showCount ? (
         <p
@@ -97,7 +59,7 @@ const AddToCartComponent = ({ showCount, product }) => {
         size="rounded"
         disabled={count <= 0}
         backgroundColor="#DACOA3"
-        onClick={removeItemFromCart}
+        onClick={removeItem}
       />
     </div>
   );

@@ -1,7 +1,16 @@
+import { useEffect, useState } from 'react';
+import { useUser } from '../../context/User.context';
 import Cart from '../CartPageComponents/Cart';
 import PropTypes from 'prop-types';
 
-const UserDashboard = ({ user }) => {
+const UserDashboard = () => {
+  const { user } = useUser();
+  const [previousOrders, setPreviousOrders] = useState(
+    Object.values(user.previousorders)
+  );
+  useEffect(() => {
+    setPreviousOrders(Object.values(user.previousorders));
+  }, [user.previousorders]);
   const styles = {
     dashboardContainer: {
       margin: '20px',
@@ -24,6 +33,8 @@ const UserDashboard = ({ user }) => {
     },
   };
 
+  useEffect(() => {}, [user.previousorders]);
+
   return (
     <div style={styles.dashboardContainer}>
       <div style={styles.userInfo}>
@@ -43,6 +54,7 @@ const UserDashboard = ({ user }) => {
           title={'Your Previous Orders'}
           totalItems={0}
           type="previousOrders"
+          items={previousOrders}
         />
       </div>
     </div>

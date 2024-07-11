@@ -4,31 +4,22 @@ import { useParams } from 'react-router-dom';
 import { checkValidUser } from '../../services/auth.service';
 
 const ProfilePage = () => {
-  const [currentUser, setCurrentUser] = useState({});
   const [falseUser, setFalseUser] = useState(false);
   const { username } = useParams();
 
   useEffect(() => {
     const user = checkValidUser(username);
-    if (user) {
-      setCurrentUser(user);
-    } else {
+    if (!user) {
       setFalseUser(true);
     }
   }, []);
-  const orders = [
-    'Order 1: Item A, Item B',
-    'Order 2: Item C, Item D',
-    'Order 3: Item E, Item F',
-    // Add more orders as needed
-  ];
   return falseUser ? (
-    <></>
+    <>
+      <h1>You are not authorized to view this profile</h1>
+    </>
   ) : (
-    <UserDashboard user={currentUser} orders={orders} />
+    <UserDashboard />
   );
 };
 
 export default ProfilePage;
-
-// username-> encryptedusername -> use as token and unique identifier.

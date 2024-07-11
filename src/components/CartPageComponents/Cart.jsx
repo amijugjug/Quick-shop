@@ -1,14 +1,9 @@
 import CartItem from './CartItem';
 import PropTypes from 'prop-types';
-import { getUserFromLS, verifySession } from '../../services/auth.service';
-import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
-import {
-  getLocalStorageItem,
-  setLocalStorageItem,
-} from '../../services/helpers/storageHelpers/localstorage.helper';
-import { USERS_DB } from '../../constants';
+import { verifySession } from '../../services/auth.service';
 import ToastNotification from '../ToastNotification';
 import { useToast } from '../../hooks/useToast.hook';
+import { useUser } from '../../context/User.context';
 
 const CartHeader = ({ title, totalItems }) => {
   const headerStyles = {
@@ -53,42 +48,26 @@ const Cart = ({
   type = 'orders',
 }) => {
   const { showToast, handleShowToast } = useToast();
+  const { clearCart, clearWishlist, updatePreviousOrders } = useUser();
+
   const onClearCartClick = () => {
     verifySession();
-    const decryptedUserName = getCookie('token');
-    const db = JSON.parse(getLocalStorageItem(USERS_DB));
-    const user = getUserFromLS(decryptedUserName);
-    const token = user.token;
-    if (user) {
-      delete user.cart;
-      user['cart'] = {};
-      user['totalCartItemCount'] = 0;
-      db[token] = user;
-      setLocalStorageItem(USERS_DB, JSON.stringify(db));
-      console.log('delete');
-    }
+    clearCart();
   };
+
   const onClearWishlistClick = () => {
     verifySession();
-    const decryptedUserName = getCookie('token');
-    const db = JSON.parse(getLocalStorageItem(USERS_DB));
-    const user = getUserFromLS(decryptedUserName);
-    const token = user.token;
-    if (user) {
-      delete user.cart;
-      user['cart'] = {};
-      user['totalCartItemCount'] = 0;
-      db[token] = user;
-      setLocalStorageItem(USERS_DB, JSON.stringify(db));
-      console.log('delete');
-    }
+    clearWishlist();
   };
+
   const onCheckoutClick = () => {
     if (totalItems > 5) {
       handleShowToast();
-      // onCheckout();
+    } else {
+      updatePreviousOrders(items);
     }
   };
+
   return (
     <>
       <CartHeader title={title} totalItems={totalItems} />

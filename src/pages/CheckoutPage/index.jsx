@@ -1,31 +1,20 @@
 import { useEffect, useState } from 'react';
 import Cart from '../../components/CartPageComponents/Cart';
-import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
-import { getLocalStorageItem } from '../../services/helpers/storageHelpers/localstorage.helper';
-import { CART, USERS_DB } from '../../constants';
+import { CART } from '../../constants';
+import { useUser } from '../../context/User.context';
 
 const CheckoutPage = () => {
-  const [cartArray, setCartArray] = useState([]);
+  const { user } = useUser();
+  const [cartArray, setCartArray] = useState(Object.values(user.cart));
   useEffect(() => {
-    const token = getCookie('token');
-    const db = JSON.parse(getLocalStorageItem(USERS_DB));
-    const user = db[token];
-
-    const UCA = Object.values(user.cart);
-
-    setCartArray(UCA);
-    console.log('this ran successfully');
-  }, []);
-
-  const calculateTotalItemsInCart = () => {
-    return cartArray.reduce((acc, curr) => acc + curr.count, 0);
-  };
+    setCartArray(Object.values(user.cart));
+  }, [user.cart]);
 
   return (
     <Cart
       items={cartArray}
       title={CART}
-      totalItems={calculateTotalItemsInCart()}
+      totalItems={user.totalCartItemCount}
       isWishlist={false}
     />
   );

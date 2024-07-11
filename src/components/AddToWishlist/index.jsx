@@ -1,15 +1,10 @@
 import Image from '../atoms/Image';
 import PropTypes from 'prop-types';
 import WishlistIcon from '../../static/assets/wishlist-icon.svg';
-import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
-import {
-  getLocalStorageItem,
-  setLocalStorageItem,
-} from '../../services/helpers/storageHelpers/localstorage.helper';
-import { USERS_DB } from '../../constants';
-import { getUserFromLS, verifySession } from '../../services/auth.service';
+import { verifySession } from '../../services/auth.service';
 import ToastNotification from '../ToastNotification';
 import { useToast } from '../../hooks/useToast.hook';
+import { useUser } from '../../context/User.context';
 
 const styles = {
   category: {
@@ -25,16 +20,10 @@ const styles = {
 };
 export const AddToWishlist = ({ showImage = false, product }) => {
   const { showToast, handleShowToast } = useToast();
-  const addItemToWishlist = () => {
+  const { addItemInWishlist } = useUser();
+  const addItemClick = () => {
     verifySession();
-    const decryptedUserName = getCookie('token');
-    const db = JSON.parse(getLocalStorageItem(USERS_DB));
-    const user = getUserFromLS(decryptedUserName);
-    const token = user.token;
-    if (user) {
-      user.wishlist[product.id] = product;
-      db[token] = user;
-      setLocalStorageItem(USERS_DB, JSON.stringify(db));
+    if (addItemInWishlist(product)) {
       handleShowToast();
     }
   };
@@ -45,13 +34,13 @@ export const AddToWishlist = ({ showImage = false, product }) => {
         <Image
           src={WishlistIcon}
           alt="Wishlist Icon"
-          onClick={addItemToWishlist}
+          onClick={addItemClick}
           width={48}
           height={48}
           style={{ alignSelf: 'center' }}
         />
       ) : (
-        <span style={styles.category} onClick={addItemToWishlist}>
+        <span style={styles.category} onClick={addItemClick}>
           Add to wishlist
         </span>
       )}
@@ -91,18 +80,11 @@ AddToWishlist.propTypes = {
 
 export const RemoveFromWishlist = ({ product }) => {
   const { showToast, handleShowToast } = useToast();
-  const removeItemFromWishlist = () => {
+  const { removeItemFromWishlist } = useUser();
+  const removeItem = () => {
     verifySession();
-    const decryptedUserName = getCookie('token');
-    const db = JSON.parse(getLocalStorageItem(USERS_DB));
-    const user = getUserFromLS(decryptedUserName);
-    const token = user.token;
-    if (user) {
-      if (Object.prototype.hasOwnProperty.call(user.wishlist, product.id)) {
-        delete user.wishlist[product.id];
-      }
-      db[token] = user;
-      setLocalStorageItem(USERS_DB, JSON.stringify(db));
+
+    if (removeItemFromWishlist(product)) {
       handleShowToast();
     }
   };
@@ -114,7 +96,7 @@ export const RemoveFromWishlist = ({ product }) => {
           backgroundColor: '#d9534f',
           color: '#fff',
         }}
-        onClick={removeItemFromWishlist}
+        onClick={removeItem}
       >
         Remove Item
       </span>

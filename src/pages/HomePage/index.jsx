@@ -8,6 +8,10 @@ import UrbanSophisticate from '../../static/assets/Urban Sophisticate.jpg';
 import ContemplativeAthleisure from '../../static/assets/Contemplative Athleisure.jpg';
 import VibrantAthleticWearCollection from '../../static/assets/Vibrant Athletic Wear Collection.jpg';
 import ContemplativeFashionPortrait from '../../static/assets/Contemplative Fashion Portrait.jpg';
+import { useEffect } from 'react';
+import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
+import { getUserFromLS } from '../../services/auth.service';
+import { useUser } from '../../context/User.context';
 
 function HeroSection({ navigate }) {
   return (
@@ -362,6 +366,18 @@ function GridSection({ navigate }) {
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const { setUser } = useUser();
+
+  useEffect(() => {
+    if (getCookie('token')) {
+      const decryptedUserName = getCookie('token');
+      const user = getUserFromLS(decryptedUserName);
+      if (user) {
+        setUser(user);
+      }
+    }
+  }, []);
+
   return (
     <>
       <HeroSection navigate={navigate} />
