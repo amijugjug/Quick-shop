@@ -9,6 +9,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     const user = checkValidUser(username);
+    console.log(user);
     if (!user) {
       setFalseUser(true);
     }

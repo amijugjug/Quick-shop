@@ -5,6 +5,7 @@ import Button from '../atoms/Button';
 import { getUserFromLS, verifySession } from '../../services/auth.service';
 import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
 import { useUser } from '../../context/User.context';
+import { decryptText } from '../../services/encryption.service';
 
 const AddToCartComponent = ({ showCount, product }) => {
   const [count, setCount] = useState(0);
@@ -24,7 +25,7 @@ const AddToCartComponent = ({ showCount, product }) => {
 
   useEffect(() => {
     verifySession();
-    const decryptedUserName = getCookie('token');
+    const decryptedUserName = decryptText(getCookie('token'));
     const user = getUserFromLS(decryptedUserName);
     if (user) {
       setCount(user.cart[product.id]?.count ?? 0);

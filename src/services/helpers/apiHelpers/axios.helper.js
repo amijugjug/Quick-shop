@@ -5,7 +5,7 @@ import { getCookie } from '../storageHelpers/cookie.helper';
 
 // Middlewares for Axios
 const axiosInstance = axios.create({
-  baseURL: 'https://fakestoreapi.com',
+  baseURL: process.env.API_BASE_URL || 'https://fakestoreapi.com',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

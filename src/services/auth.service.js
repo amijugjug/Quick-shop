@@ -12,11 +12,12 @@ import {
   getLocalStorageItem,
   setLocalStorageItem,
 } from './helpers/storageHelpers/localstorage.helper';
+import { decryptText, encryptText } from './encryption.service';
 
 export const login = async (formData, navigateTo, pathToNavigate) => {
   try {
     // Using local storage for login
-    const localToken = formData.username;
+    const localToken = encryptText(formData.username);
     const existingUsers = JSON.parse(getLocalStorageItem(USERS_DB));
     if (
       existingUsers &&
@@ -25,6 +26,7 @@ export const login = async (formData, navigateTo, pathToNavigate) => {
       setCookie('token', localToken, 7);
     } else {
       throw new Error(`User is not registerd`);
+      // show toaster
     }
 
     // In case if the backend support is enabled
@@ -51,7 +53,7 @@ export const logout = async (navigateTo) => {
 
 export const register = async (formData, navigate, pathToNavigate) => {
   const constructNewUser = (formData) => {
-    const token = formData.username;
+    const token = encryptText(formData.username);
     return {
       ...formData,
       token,
@@ -73,6 +75,7 @@ export const register = async (formData, navigate, pathToNavigate) => {
     if (existingUsers) {
       if (Object.prototype.hasOwnProperty.call(existingUsers, token)) {
         throw new Error(`Username : ${formData.username} is not available`);
+        // show toaster
       }
       setLocalStorageItem(
         USERS_DB,
@@ -96,7 +99,7 @@ export const register = async (formData, navigate, pathToNavigate) => {
 };
 
 export const verifySession = () => {
-  const token = getCookie('token');
+  const token = decryptText(getCookie('token'));
 
   if (!token) {
     window.location.href = '/login';
@@ -120,6 +123,8 @@ export const getUserFromLS = (username) => {
   const users_db = JSON.parse(getLocalStorageItem(USERS_DB));
   if (!users_db) return false;
 
+  console.log('126');
+  // const encryptedUsername = encryptText();
   const user = users_db[username];
   if (!user) return false;
 
@@ -127,11 +132,9 @@ export const getUserFromLS = (username) => {
 };
 
 export const checkValidUser = (username) => {
-  const decryptedUserName = username;
-  const user = getUserFromLS(decryptedUserName);
-  const currentLoggedInUser = getCookie('token');
-  if (currentLoggedInUser === decryptedUserName) return user;
-  return null;
+  const encryptedUsername = encryptText(username);
+  console.log(encryptedUsername);
+  return encryptedUsername === getCookie('token');
 };
 
 export const isUserLoggedIn = () => {

@@ -1,4 +1,5 @@
 export const USERS_DB = 'users_db';
+export const SECRET_KEY = 'my-secret-key';
 export const CART = 'Your Cart';
 export const WISHLIST = 'Your Wishlist';
 export const RATINGS = ['>1', '>2', '>3', '>4', '>5'];

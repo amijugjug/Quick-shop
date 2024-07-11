@@ -7,6 +7,7 @@ import {
 import { USERS_DB } from '../constants';
 import { getCookie } from '../services/helpers/storageHelpers/cookie.helper';
 import { getUserFromLS } from '../services/auth.service';
+import { decryptText } from '../services/encryption.service';
 
 const userSchema = {
   name: '',
@@ -37,12 +38,14 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
   const updateUserStateFromStorage = () => {
-    const decryptedUserName = getCookie('token');
-    if (decryptedUserName && JSON.parse(getLocalStorageItem(USERS_DB))) {
-      const db = JSON.parse(getLocalStorageItem(USERS_DB));
-      const user = getUserFromLS(decryptedUserName);
-      if (user && db[user.token]) {
-        setUser(db[user.token]);
+    if (getCookie('token')) {
+      const decryptedUserName = decryptText(getCookie('token'));
+      if (decryptedUserName && JSON.parse(getLocalStorageItem(USERS_DB))) {
+        const db = JSON.parse(getLocalStorageItem(USERS_DB));
+        const user = getUserFromLS(decryptedUserName);
+        if (user && db[user.token]) {
+          setUser(db[user.token]);
+        }
       }
     }
   };
@@ -153,6 +156,10 @@ export const UserProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    const db = JSON.parse(getLocalStorageItem(USERS_DB));
+    if (!db) {
+      setLocalStorageItem(USERS_DB, JSON.stringify({}));
+    }
     updateUserStateFromStorage();
   }, []);
 
