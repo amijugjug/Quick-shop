@@ -1,0 +1,66 @@
+.paymentSuccessContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.paymentSuccessContent {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.5s ease-in-out;
+}
+
+.paymentSuccessImage {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.paymentSuccessTitle {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.paymentSuccessMessage {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.paymentSuccessHomeLink {
+  font-size: 1rem;
+  color: #fff;
+  background-color: #2575fc;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.paymentSuccessHomeLink:hover {
+  background-color: #1a5bbb;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

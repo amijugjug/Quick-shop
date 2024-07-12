@@ -2,11 +2,12 @@
 
 import axios from 'axios';
 
+import config from '../../../config';
 import { getCookie } from '../storageHelpers/cookie.helper';
 
 // Middlewares for Axios
 const axiosInstance = axios.create({
-  baseURL: 'https://fakestoreapi.com',
+  baseURL: config.apiUrl,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

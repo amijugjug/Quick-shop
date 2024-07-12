@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Cart.module.css'; // Import the CSS Module
 import CartItem from './CartItem';
+import config from '../../config';
 import { useToast } from '../../context/Toast.context';
 import { useUser } from '../../context/User.context';
 import { verifySession } from '../../services/auth.service';
@@ -37,7 +38,7 @@ const Cart = ({ title, items, totalItems, type }) => {
 
   // payment integration
   const makePayment = async () => {
-    const stripe = await loadStripe(process.env.PUBLISHABLE_KEY);
+    const stripe = await loadStripe(config.stripePublicKey);
 
     const body = {
       products: items,
@@ -46,7 +47,7 @@ const Cart = ({ title, items, totalItems, type }) => {
       'Content-Type': 'application/json',
     };
     const response = await fetch(
-      'http://localhost:7000/api/create-checkout-session',
+      'http://localhost:3002/api/create-checkout-session',
       {
         method: 'POST',
         headers: headers,

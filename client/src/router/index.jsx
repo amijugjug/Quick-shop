@@ -8,6 +8,7 @@ import Navbar from '../components/Navbar';
 import CheckoutPage from '../pages/CheckoutPage';
 import HomePage from '../pages/HomePage';
 import NotFoundPage from '../pages/NotFound';
+import PaymentResultPage from '../pages/PaymentResultPage';
 import ProductDetailPage from '../pages/ProductDetailPage';
 import ProductPage from '../pages/ProductPage';
 import ProfilePage from '../pages/ProfilePage';
@@ -27,6 +28,8 @@ const AppRouter = () => {
           <Route path="/checkout" Component={CheckoutPage} />
           <Route path="/login" Component={Login} />
           <Route path="/register" Component={Register} />
+          <Route path="/success" Component={PaymentResultPage} />
+          <Route path="/failed" Component={PaymentResultPage} />
           <Route path="*" Component={NotFoundPage} />
         </Routes>
         <Footer />
