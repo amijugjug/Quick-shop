@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 import styles from './AddToCart.module.css';
+import { useToast } from '../../context/Toast.context';
 import { useUser } from '../../context/User.context';
 import { getUserFromLS, verifySession } from '../../services/auth.service';
 import { getCookie } from '../../services/helpers/storageHelpers/cookie.helper';
@@ -10,17 +11,20 @@ import Button from '../atoms/Button';
 const AddToCartComponent = ({ showCount, product }) => {
   const [count, setCount] = useState(0);
   const { addItemInCart, removeItemFromCart } = useUser();
+  const { notify } = useToast();
 
   const addItem = () => {
     verifySession();
     const currentItemCount = addItemInCart(product);
     setCount(currentItemCount);
+    notify('success', 'Item added to cart');
   };
 
   const removeItem = () => {
     verifySession();
     const currentItemCount = removeItemFromCart(product);
     setCount(currentItemCount);
+    notify('success', 'Item removed from cart');
   };
 
   useEffect(() => {
@@ -43,7 +47,7 @@ const AddToCartComponent = ({ showCount, product }) => {
       {showCount ? (
         <p className={styles.count}>{count}</p>
       ) : (
-        <Button text={count} size="medium" backgroundColor="#DACOA3" />
+        <span className={styles.countOnCart}>{count}</span>
       )}
       <Button
         text="-"

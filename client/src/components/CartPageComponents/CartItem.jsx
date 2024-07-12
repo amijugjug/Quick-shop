@@ -4,6 +4,7 @@ import styles from './CartItem.module.css'; // Import the CSS Module
 import AddToCartComponent from '../AddToCartComponent';
 import { RemoveFromWishlist } from '../AddToWishlist';
 import Image from '../atoms/Image';
+import PurchasedCountContainer from '../PurchasedItemCount';
 
 const CartItem = ({ item, type }) => {
   return (
@@ -25,7 +26,10 @@ const CartItem = ({ item, type }) => {
         <div className={styles.actionsContainer}>
           {type === 'wishlist' ? <RemoveFromWishlist product={item} /> : null}
           {type === 'wishlist' || type === 'orders' ? (
-            <AddToCartComponent product={item} showCount={true} />
+            <AddToCartComponent product={item} showCount={false} />
+          ) : null}
+          {type === 'previousorders' ? (
+            <PurchasedCountContainer product={item} />
           ) : null}
         </div>
       </div>

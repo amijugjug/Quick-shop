@@ -12,3 +12,10 @@
   font-weight: 400;
   line-height: 16px;
 }
+
+.countOnCart {
+  width: 50px;
+  align-self: center;
+  text-align: center;
+  font-size: 24px;
+}

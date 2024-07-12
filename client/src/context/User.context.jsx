@@ -111,6 +111,7 @@ export const UserProvider = ({ children }) => {
       ) {
         delete currentUser.wishlist[product.id];
         setUserToLocalStorage(currentUser);
+        return true;
       }
     }
   };

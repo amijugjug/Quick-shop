@@ -14,6 +14,8 @@ export const AddToWishlist = ({ showImage = false, product }) => {
     verifySession();
     if (addItemInWishlist(product)) {
       notify('success', 'Item added to wishlist');
+    } else {
+      notify('error', 'Problem in adding item to wishlist');
     }
   };
 
@@ -59,9 +61,10 @@ export const RemoveFromWishlist = ({ product }) => {
   const { removeItemFromWishlist } = useUser();
   const removeItem = () => {
     verifySession();
-
     if (removeItemFromWishlist(product)) {
       notify('success', 'Item removed from wishlist');
+    } else {
+      notify('error', 'Problem in removing item from wishlist');
     }
   };
   return (
