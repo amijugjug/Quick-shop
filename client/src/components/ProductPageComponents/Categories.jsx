@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Categories.module.css'; // Import the CSS Module
 import CategoryItems from './CategoryItems';
-import { RATINGS } from '../../constants';
+import { RATINGS, PRICE_RANGE } from '../../constants';
 import PriceRangeComponent from '../atoms/PriceRangeComponent';
 
 const Categories = ({
@@ -10,6 +10,7 @@ const Categories = ({
   currentCategory,
   handlePriceRangeChange,
   currentRating,
+  maximumPrice,
 }) => {
   return (
     <>
@@ -17,8 +18,8 @@ const Categories = ({
         <div className={styles.categoryContainerStyle}>
           <h1 className={styles.titleStyle}>Filter by price</h1>
           <PriceRangeComponent
-            min={0}
-            max={200}
+            min={PRICE_RANGE.MINIMUM}
+            max={maximumPrice}
             onChange={handlePriceRangeChange}
           />
         </div>
@@ -48,6 +49,7 @@ Categories.propTypes = {
   currentCategory: PropTypes.string.isRequired,
   currentRating: PropTypes.string.isRequired,
   handlePriceRangeChange: PropTypes.func.isRequired,
+  maximumPrice: PropTypes.number,
 };
 
 export default Categories;
