@@ -1,7 +1,7 @@
 import { loadStripe } from '@stripe/stripe-js';
 import PropTypes from 'prop-types';
 
-import styles from './Cart.module.css'; // Import the CSS Module
+import styles from './Cart.module.css';
 import CartItem from './CartItem';
 import config from '../../config';
 import { useToast } from '../../context/Toast.context';
@@ -54,13 +54,11 @@ const Cart = ({ title, items, totalItems, type }) => {
         body: JSON.stringify(body),
       }
     );
-
     const session = await response.json();
 
     const result = stripe.redirectToCheckout({
-      sessionId: session.id,
+      sessionId: session?.id,
     });
-    updatePreviousOrders(items);
 
     if (result.error) {
       console.log(result.error);
@@ -71,7 +69,6 @@ const Cart = ({ title, items, totalItems, type }) => {
     if (totalItems > 5) {
       notify('error', 'Cannot proceed with more than 5 items');
     } else {
-      // updatePreviousOrders(items);
       makePayment();
     }
   };

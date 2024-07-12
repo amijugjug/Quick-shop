@@ -125,7 +125,7 @@ export const UserProvider = ({ children }) => {
   };
 
   const updatePreviousOrders = (items) => {
-    const itemsObject = items.reduce((acc, item) => {
+    const itemsObject = items?.reduce((acc, item) => {
       acc[item.id] = item;
       return acc;
     }, {});

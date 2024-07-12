@@ -1,15 +1,23 @@
 import { Link } from 'react-router-dom';
 
 import styles from './PaymentResultPage.module.css';
+import { useUser } from '../../context/User.context';
 import PaymentFailed from '../../static/assets/PaymentFailed.webp';
 import PaymentSuccess from '../../static/assets/PaymentSuccess.webp';
+
 const PaymentResultPage = () => {
+  const { user, updatePreviousOrders, clearCart } = useUser();
   const isSuccessPage = () => {
     if (window) {
+      const items = Object.values(user?.cart ?? {});
       const url = window.location.href;
       if (url.includes('success')) {
+        updatePreviousOrders(items);
+        clearCart();
         return true;
-      } else if (url.includes('failure')) return false;
+      } else if (url.includes('failure')) {
+        return false;
+      }
     }
   };
   return (
