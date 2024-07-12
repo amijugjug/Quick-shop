@@ -34,6 +34,7 @@
   border-radius: 0.25rem;
   max-height: 12rem;
   background: #fefaf6;
+  min-height: 38px;
 }
 
 .image {
@@ -67,6 +68,7 @@
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  padding: 0px 12px;
 }
 
 .description {
@@ -93,6 +95,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
+  gap: 12px;
 }
 
 .category {

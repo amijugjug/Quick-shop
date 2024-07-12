@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
-import styles from './UserDashboard.module.css'; // Import the CSS file
+import styles from './UserDashboard.module.css';
 import { useUser } from '../../context/User.context';
 import Cart from '../CartPageComponents/Cart';
 
@@ -17,7 +17,7 @@ const UserDashboard = () => {
   return (
     <div className={styles.dashboardContainer}>
       <div className={styles.userInfo}>
-        <h2 className={styles.heading}>User Dashboard</h2>
+        <h2 className={styles.heading}>User Details</h2>
         <p>
           <strong>Name:</strong> {user?.name}
         </p>

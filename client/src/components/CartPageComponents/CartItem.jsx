@@ -13,8 +13,8 @@ const CartItem = ({ item, type }) => {
           src={item.image}
           alt={item.title}
           className={styles.image}
-          width={200}
-          height={200}
+          width={150}
+          height={150}
         />
       </div>
       <div className={styles.detailsContainer}>

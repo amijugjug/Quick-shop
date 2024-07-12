@@ -24,8 +24,7 @@
   width: calc(100% - 220px);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 200px;
+  gap: 12px;
 }
 
 .textContainer {
@@ -51,9 +50,10 @@
 
 .actionsContainer {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 0px 2rem;
 }
 
 .button {
