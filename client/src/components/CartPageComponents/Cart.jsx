@@ -7,6 +7,7 @@ import config from '../../config';
 import { useToast } from '../../context/Toast.context';
 import { useUser } from '../../context/User.context';
 import { verifySession } from '../../services/auth.service';
+import { makePaymentCallToStripe } from '../../services/payment.service';
 
 const CartHeader = ({ title, totalItems }) => {
   return (
@@ -24,7 +25,7 @@ CartHeader.propTypes = {
 
 const Cart = ({ title, items, totalItems, type }) => {
   const { notify } = useToast();
-  const { clearCart, clearWishlist, updatePreviousOrders } = useUser();
+  const { clearCart, clearWishlist } = useUser();
 
   const onClearCartClick = () => {
     verifySession();
@@ -39,22 +40,7 @@ const Cart = ({ title, items, totalItems, type }) => {
   // payment integration
   const makePayment = async () => {
     const stripe = await loadStripe(config.stripePublicKey);
-
-    const body = {
-      products: items,
-    };
-    const headers = {
-      'Content-Type': 'application/json',
-    };
-    const response = await fetch(
-      'http://localhost:3002/api/create-checkout-session',
-      {
-        method: 'POST',
-        headers: headers,
-        body: JSON.stringify(body),
-      }
-    );
-    const session = await response.json();
+    const session = await makePaymentCallToStripe(items);
 
     const result = stripe.redirectToCheckout({
       sessionId: session?.id,
