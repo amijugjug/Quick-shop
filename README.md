@@ -1,70 +1,154 @@
-# Getting Started with Create React App
+Certainly! Here's the complete `README.md` content for your project:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Quick Shop
 
-In the project directory, you can run:
+Quick Shop is an e-commerce website utilizing products from the Fake Store API. User authentication is managed via the Local Storage API.
 
-### `npm start`
+**Deployed on:** [Quick Shop Azure](https://quick-shop-azure.vercel.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Walkthrough
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Registration and Login**:
+   - Users must register first.
+   - Use your username to log in.
+   - Upon logging in, you will be redirected to the homepage.
 
-### `npm test`
+2. **Navigation**:
+   - From the homepage, navigate to the Product page, Wishlist, or Orders section.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. **Product Page**:
+   - View product details by clicking on a product.
+   - Wishlist or add items to the cart directly from the product card.
 
-### `npm run build`
+4. **Filtering**:
+   - Filter items by category, ratings, and price range.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. **Cart and Orders**:
+   - Add items to the cart.
+   - Navigate to the Order page via the navbar button.
+   - Proceed to purchase a maximum of 5 items at a time.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+6. **Checkout**:
+   - Checkout via the Stripe payment page.
+   - Successful payment redirects to the success page.
+   - Failed payment redirects to the failed page.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+7. **Dashboard**:
+   - Post-purchase, check your dashboard for purchased orders.
 
-### `npm run eject`
+## Features
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Built with React.js and native CSS.
+2. Integrated with Stripe for payments.
+3. User authentication via Local Storage and Context API.
+4. Utilizes custom hooks.
+5. Configured with ESLint and Prettier.
+6. Implements Shimmer UI during data loading.
+7. Optimized core web vitals score.
+8. Optimized bundle size.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Steps to Run
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Prerequisites
+- Node.js
+- npm
+- Free Developer Account on Stripe
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Client Setup
 
-## Learn More
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/amijugjug/quick-shop.git
+   cd <repository_directory>/client
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Copy .env file from .env.sample and do necessary changes.
 
-### Code Splitting
+4. Start the client:
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Server Setup
 
-### Analyzing the Bundle Size
+1. Navigate to the server directory:
+   ```bash
+   cd <repository_directory>/server
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-### Making a Progressive Web App
+3. Copy .env file from .env.sample and do necessary changes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+4. Start the server:
+   ```bash
+   npm start
+   ```
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Running the Application
 
-### Deployment
+1. Start the server first:
+   ```bash
+   cd <repository_directory>/server
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+2. Start the client:
+   ```bash
+   cd <repository_directory>/client
+   npm start
+   ```
 
-### `npm run build` fails to minify
+### Note
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Client runs on port 3000.
+- Server runs on port 3002.
+
+## Screenshots
+
+### Register Page
+![Register Page](https://res.cloudinary.com/sriprakhar2/image/upload/v1720767608/Quick-shop-images/Screenshot_2024-07-12_at_12.29.58_PM_bd7x77.png)
+
+### Login Page
+![Login Page](https://res.cloudinary.com/sriprakhar2/image/upload/v1720767615/Quick-shop-images/Screenshot_2024-07-12_at_12.29.45_PM_ygrynv.png)
+
+### Home Page
+![Home Page](https://res.cloudinary.com/sriprakhar2/image/upload/v1720766971/Quick-shop-images/Screenshot_2024-07-12_at_11.47.29_AM_j9vkgc.png)
+
+### Product Listing Page
+![Product Listing Page](https://res.cloudinary.com/sriprakhar2/image/upload/v1720766971/Quick-shop-images/Screenshot_2024-07-12_at_11.48.40_AM_vmdclp.png)
+
+### Cart Page
+![Cart Page](https://res.cloudinary.com/sriprakhar2/image/upload/v1720766970/Quick-shop-images/Screenshot_2024-07-12_at_11.49.00_AM_dcio8f.png)
+
+### Wishlist Page
+![Wishlist Page](https://res.cloudinary.com/sriprakhar2/image/upload/v1720766970/Quick-shop-images/Screenshot_2024-07-12_at_11.48.51_AM_upklcp.png)
+
+### Payment Page
+![Payment Page](https://res.cloudinary.com/sriprakhar2/image/upload/v1720767038/Quick-shop-images/Screenshot_2024-07-12_at_12.20.29_PM_pmabz4.png)
+
+### User Dashboard
+![User Dashboard](https://res.cloudinary.com/sriprakhar2/image/upload/v1720766970/Quick-shop-images/Screenshot_2024-07-12_at_11.49.15_AM_uzfzfz.png)
+
+## Web Vitals Score
+![Web Vitals Score](https://res.cloudinary.com/sriprakhar2/image/upload/v1720767102/Quick-shop-images/Screenshot_2024-07-12_at_12.21.33_PM_yaryqx.png)
+
+## Bundle Analyzer
+![Bundle Analyzer](https://res.cloudinary.com/sriprakhar2/image/upload/v1720767277/Quick-shop-images/Screenshot_2024-07-12_at_12.24.17_PM_ycq7aa.png)
+
+---
+
+Thanks for using Quick Shop!
+```
+
+Replace `<repository_url>` and `<repository_directory>` with the actual URL and directory path of your project repository. This markdown file is ready to be used as your project's `README.md`.
