@@ -85,7 +85,7 @@ function GridSection({ navigate }) {
               onClick={() => {
                 navigate('/products?category=men%27s%20clothing');
               }}
-              size="small"
+              size="large"
             />
           </div>
         </div>
