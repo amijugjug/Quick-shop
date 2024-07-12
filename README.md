@@ -94,21 +94,7 @@ Quick Shop is an e-commerce website utilizing products from the Fake Store API. 
    npm start
    ```
 
-
-### Running the Application
-
-1. Start the server first:
-   ```bash
-   cd <repository_directory>/server
-   npm start
-   ```
-
-2. Start the client:
-   ```bash
-   cd <repository_directory>/client
-   npm start
-   ```
-
+   
 ### Note
 
 - Client runs on port 3000.
