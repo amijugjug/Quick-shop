@@ -172,3 +172,17 @@
 .cartIcon {
   margin-right: 16px;
 }
+
+.priceContainer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  min-width: 600px;
+}
+
+.ratingCategoryContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}

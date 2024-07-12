@@ -7,12 +7,11 @@ import AddToCartComponent from '../AddToCartComponent';
 import { AddToWishlist } from '../AddToWishlist';
 import Image from '../atoms/Image';
 
-
 const ProductPage = ({ product }) => {
   return (
     <div className={styles.container}>
       <Link to="/products">
-        <a className={styles.backLink}>Back to products</a>
+        <a className={styles.backLink}>← Back to products</a>
       </Link>
       <div className={styles.contentContainer}>
         <Image
@@ -24,18 +23,20 @@ const ProductPage = ({ product }) => {
         />
         <div className={styles.detailsContainer}>
           <div className={styles.categoryContainer}>
-            <span className={styles.category}>{product.category}</span>
-            <div className={styles.ratingContainer}>
-              <Rating initialRating={product?.rating?.rate} readonly />
-              <span className={styles.ratingText}>
-                ({product?.rating?.count} ratings)
-              </span>
+            <div className={styles.ratingCategoryContainer}>
+              <span className={styles.category}>{product.category}</span>
+              <div className={styles.ratingContainer}>
+                <Rating initialRating={product?.rating?.rate} readonly />
+                <span className={styles.ratingText}>
+                  ({product?.rating?.count} ratings)
+                </span>
+              </div>
             </div>
             <h1 className={styles.title}>{product.title}</h1>
             <p className={styles.description}>{product.description}</p>
           </div>
           <div className={styles.priceContainer}>
-            <p className={styles.price}>${product.price}</p>
+            <p className={styles.price}>Price : ${product.price}</p>
             <AddToWishlist showImage={true} product={product} />
             <AddToCartComponent showCount={false} product={product} />
           </div>

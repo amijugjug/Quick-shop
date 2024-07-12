@@ -43,7 +43,7 @@ const AddToCartComponent = ({ showCount, product }) => {
       {showCount ? (
         <p className={styles.count}>{count}</p>
       ) : (
-        <Button text="Add to Cart" size="medium" backgroundColor="#DACOA3" />
+        <Button text={count} size="medium" backgroundColor="#DACOA3" />
       )}
       <Button
         text="-"
