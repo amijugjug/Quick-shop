@@ -55,6 +55,8 @@ Quick Shop is an e-commerce website utilizing products from the Fake Store API. 
 - npm
 - Free Developer Account on Stripe
 
+### You could use test cards for making payments : [Test cards](https://docs.stripe.com/testing)
+
 ### Client Setup
 
 1. Clone the repository:
